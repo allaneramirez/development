@@ -57,7 +57,7 @@
 
         <xpath expr="//div[hasclass('js_account_report_footnotes')]" position="after">
             <t t-if="data">
-                 <t t-call="sign_account_report.pdf_export_main"/>
+                 <t t-call="is_custom_financial_report_sign.pdf_export_main"/>
             </t>
         </xpath>
     </template>
