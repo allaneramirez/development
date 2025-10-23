@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pdf_export_main">
+        <div style="page-break-inside: avoid !important; margin-top: 40px; font-size: 12px;">
+
+            <div t-if="data.certification_text" style="text-align: left; margin-bottom: 30px; white-space: pre-wrap;">
+                <t t-esc="data.certification_text"/>
+            </div>
+
+            <t t-set="signatures" t-value="[]"/>
+            <t t-if="data.name_1 and data.sign_img_1"><t t-set="signatures" t-value="signatures + [{'name': data.name_1, 'pos': data.position_1, 'img': data.sign_img_1}]"/></t>
+            <t t-if="data.name_2 and data.sign_img_2"><t t-set="signatures" t-value="signatures + [{'name': data.name_2, 'pos': data.position_2, 'img': data.sign_img_2}]"/></t>
+            <t t-if="data.name_3 and data.sign_img_3"><t t-set="signatures" t-value="signatures + [{'name': data.name_3, 'pos': data.position_3, 'img': data.sign_img_3}]"/></t>
+
+            <t t-set="sig_count" t-value="len(signatures)"/>
+
+            <div class="row" t-if="sig_count > 0" style="margin-top: 30px;">
+                <t t-set="col_class" t-value="'col-' + str(12 // sig_count)"/>
+                <t t-set="offset_class" t-value="'offset-' + str((12 % sig_count) // 2) if sig_count == 1 else ''"/>
+
+                <t t-foreach="signatures" t-as="sig">
+                    <div t-att-class="col_class + ' ' + offset_class + (' text-center' if sig_count == 1 else ' text-center')">
+                        <div style="height: 100px; border-bottom: 1px solid black; margin: 0 20px; display: flex; align-items: center; justify-content: center;">
+                            <img t-if="sig['img']"
+                                 t-attf-src="data:image/png;base64,#{sig['img']}"
+                                 style="max-height: 100px; max-width: 100%;"/>
+                        </div>
+                        <p style="text-align: center; margin-top: 5px; margin-bottom: 0px; font-weight: bold;">
+                            <t t-esc="sig['name']"/>
+                        </p>
+                        <p style="text-align: center; margin-top: 0px;">
+                            <t t-esc="sig['pos']"/>
+                        </p>
+                    </div>
+                    <t t-set="offset_class" t-value="''"/>
+                </t>
+            </div>
+        </div>
+    </template>
+</odoo>

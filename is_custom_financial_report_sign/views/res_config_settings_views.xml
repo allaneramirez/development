@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sign_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.sign.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='account']/div[last()]" position="after">
+
+                <h2>Firmas de Reportes</h2>
+                <div class="row mt16 o_settings_container" id="account_reports_signatures">
+
+                    <div class="col-12 col-lg-12 o_setting_box">
+                         <div class="o_setting_right_pane">
+                             <label for="certification_text" string="Texto de Certificación al pie del reporte"/>
+                             <div class="text-muted">
+                                 Este texto aparecerá antes de las firmas en los reportes PDF.
+                             </div>
+                             <field name="certification_text" nolabel="1" placeholder="Escribe aquí la nota o certificación..."/>
+                         </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <label for="name_1" string="Firma 1"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <field name="name_1" placeholder="Nombre..."/>
+                            <field name="position_1" placeholder="Cargo..."/>
+                            <field name="sign_img_1" widget="image" class="img-fluid"/>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <label for="name_2" string="Firma 2"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <field name="name_2" placeholder="Nombre..."/>
+                            <field name="position_2" placeholder="Cargo..."/>
+                            <field name="sign_img_2" widget="image" class="img-fluid"/>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <label for="name_3" string="Firma 3"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <field name="name_3" placeholder="Nombre..."/>
+                            <field name="position_3" placeholder="Cargo..."/>
+                            <field name="sign_img_3" widget="image" class="img-fluid"/>
+                        </div>
+                    </div>
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

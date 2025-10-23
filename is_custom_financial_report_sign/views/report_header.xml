@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_report_main_template" inherit_id="account_reports.main_template">
+
+        <xpath expr="//div[hasclass('o_account_reports_header')]" position="replace">
+            <t t-if="report.id == env.ref('account_reports.balance_sheet', False).id or report.id == env.ref('account_reports.profit_and_loss', False).id">
+                <div class="header custom_header">
+                     <div style="text-align: center; font-size: 14px; line-height: 1.2;">
+                        <div style="font-weight: bold;" t-esc="company_name.upper()"/>
+                        <div t-if="company_vat">VAT: <t t-esc="company_vat"/></div>
+                        <div style="font-weight: bold; margin-top: 5px;" t-esc="report_name.upper()"/>
+                        <div t-esc="date_range_es"/>
+                        <div t-esc="currency_es"/>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                 <div class="o_account_reports_header print_only">
+                      <div>
+                          <h2>
+                              <strong>
+                                  <t t-if="report.filter_show_draft and options.get('all_entries')">[Draft]</t>
+                                  <t t-esc="report_title or report.name"/>
+                              </strong>
+                          </h2>
+                      </div>
+                      <div class="row">
+                          <div class="col-8">
+                              <t t-if="not options.get('multi_company')">
+                                  <br/><t t-esc="report_company_name"/>
+                              </t>
+                              <t t-else="">
+                                  <br/>Companies:
+                                  <t t-set="company_value">All</t>
+                                  <t t-foreach="options['multi_company']" t-as="c">
+                                      <t t-if="not company_value_first">,</t>
+                                      <t t-set="company_value" t-value="''"/>
+                                      <t t-esc="c.get('name')"/>
+                                  </t>
+                                  <t t-esc="company_value"/>
+                              </t>
+                              <address class="mb-0" t-field="env.company.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+                              <t t-if="options.get('tax_unit', 'company_only') == 'company_only'">
+                                  VAT: <t t-esc="env.company.vat"/>
+                              </t>
+                              <t t-else="">
+                                  VAT: <t t-esc="env['account.tax.unit'].browse(options.get('tax_unit')).vat"/>
+                              </t>
+                          </div>
+                          <div class="col-4">
+                              <t t-call="account_reports.filter_info_template"/>
+                          </div>
+                      </div>
+                 </div>
+            </t>
+        </xpath>
+
+        <xpath expr="//div[hasclass('js_account_report_footnotes')]" position="after">
+            <t t-if="data">
+                 <t t-call="sign_account_report.pdf_export_main"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

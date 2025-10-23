@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_custom_report_signature_admin,access.custom.report.signature.admin,model_custom_report_signature,,1,1,1,1
