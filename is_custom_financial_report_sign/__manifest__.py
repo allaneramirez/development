@@ -5,11 +5,18 @@
     'category': 'Accounting',
     'summary': 'Add a traditional header and the financial reports, the ability to write a certification and signatures, add a custom style to the PDF and XLSX generation.',
     'author': 'Allan E. Ramirez Madrid / INTEGRALL',
+
     'depends': [
         'base',
         'account',
         'account_reports',
     ],
+
+    'external_dependencies': {
+        'python': [
+            'openpyxl',
+        ],
+    },
 
     'data': [
         'views/res_config_settings_views.xml',

@@ -1,0 +1,192 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* is_custom_financial_report_sign
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-25 06:12+0000\n"
+"PO-Revision-Date: 2025-10-25 00:15-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#. module: is_custom_financial_report_sign
+#. odoo-python
+#: code:addons/is_custom_financial_report_sign/models/account_report.py:0
+#, python-format
+msgid "(Expresado en %s)"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.custom_report_main_template
+msgid "<br/>Companies:"
+msgstr "<br/>Compañies:"
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model,name:is_custom_financial_report_sign.model_account_report
+msgid "Accounting Report"
+msgstr "Informe financiero"
+
+#. module: is_custom_financial_report_sign
+#. odoo-python
+#: code:addons/is_custom_financial_report_sign/models/account_report.py:0
+#, python-format
+msgid "Al %s"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.custom_report_main_template
+msgid "All"
+msgstr "Todos"
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__position_1
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__position_1
+msgid "Cargo Firmante 1"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__position_2
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__position_2
+msgid "Cargo Firmante 2"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__position_3
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__position_3
+msgid "Cargo Firmante 3"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+msgid "Cargo..."
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model,name:is_custom_financial_report_sign.model_res_company
+msgid "Companies"
+msgstr "Empresas"
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model,name:is_custom_financial_report_sign.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes de configuración"
+
+#. module: is_custom_financial_report_sign
+#. odoo-python
+#: code:addons/is_custom_financial_report_sign/models/account_report.py:0
+#, python-format
+msgid "Del %s al %s"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_view_company_form
+msgid "Escribe aquí la nota o certificación..."
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+msgid "Este texto aparecerá antes de las firmas en los reportes PDF."
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__sign_img_1
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__sign_img_1
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_view_company_form
+msgid "Firma 1"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__sign_img_2
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__sign_img_2
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_view_company_form
+msgid "Firma 2"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__sign_img_3
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__sign_img_3
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_view_company_form
+msgid "Firma 3"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_view_company_form
+msgid "Firmas de Reportes"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#. odoo-python
+#: code:addons/is_custom_financial_report_sign/models/account_report.py:0
+#, python-format
+msgid "Moneda no especificada"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__name_1
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__name_1
+msgid "Nombre Firmante 1"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__name_2
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__name_2
+msgid "Nombre Firmante 2"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__name_3
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__name_3
+msgid "Nombre Firmante 3"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+msgid "Nombre..."
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#. odoo-python
+#: code:addons/is_custom_financial_report_sign/models/account_report.py:0
+#, python-format
+msgid "Periodo no especificado"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_account_report__show_sign_area
+msgid "Show Sign Area"
+msgstr "Mostrar Area de Firma"
+
+#. module: is_custom_financial_report_sign
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_company__certification_text
+#: model:ir.model.fields,field_description:is_custom_financial_report_sign.field_res_config_settings__certification_text
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_view_company_form
+msgid "Texto de Certificación"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.sign_res_config_settings_view_form
+msgid "Texto de Certificación al pie del reporte"
+msgstr ""
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.custom_report_main_template
+msgid "VAT:"
+msgstr "NIT:"
+
+#. module: is_custom_financial_report_sign
+#: model_terms:ir.ui.view,arch_db:is_custom_financial_report_sign.custom_report_main_template
+msgid "[Draft]"
+msgstr "[Borrador]"
