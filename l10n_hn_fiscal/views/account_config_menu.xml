@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_l10n_hn_cai" model="ir.actions.act_window">
+            <field name="name">Configuración de CAI</field>
+            <field name="res_model">l10n_hn.cai</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Crea una nueva configuración de CAI
+              </p><p>
+                Aquí puedes gestionar las autorizaciones de impresión (CAI) para tus
+                documentos fiscales. Cada registro de CAI debe ser confirmado para
+                propagar sus datos a la secuencia correspondiente.
+              </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="menu_sequence_cai"
+            name="Configuración de CAI"
+            parent="l10n_hn_fiscal.menu_l10n_hn_fiscal_config_root"
+            action="action_l10n_hn_cai"
+            sequence="30"
+            groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+
+    </data>
+</odoo>

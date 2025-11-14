@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- === Vista Formulario para tipo STORE === -->
+        <record id="view_partner_form_inherit_store_type" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.store.type</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='child_ids']//form//field[@name='type']" position="after">
+                    <p class="text-muted" attrs="{'invisible': [('type', '!=', 'store')]}">
+                        Use the 'store' contact type to register a branch/store of the company.
+                        A store is a commercial premise with the same tax identification
+                        that works as an extension of the main company.
+                    </p>
+                </xpath>
+
+                <xpath expr="//field[@name='child_ids']//form//group" position="after">
+                    <group string="Información de Sucursal"
+                           name="store_info" attrs="{'invisible': [('type', '!=', 'store')]}">
+                        <group>
+                           <field name="responsible_name"/>
+                           <field name="store_tax_code"/>
+                        </group>
+                        <group>
+                           <field name="store_licence_number"/>
+                           <field name="tax_licenced_name"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

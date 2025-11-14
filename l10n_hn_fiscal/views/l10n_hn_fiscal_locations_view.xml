@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- l10n_hn.establecimiento Views -->
+    <record id="view_l10n_hn_establecimiento_tree" model="ir.ui.view">
+        <field name="name">l10n_hn.establecimiento.tree</field>
+        <field name="model">l10n_hn.establecimiento</field>
+        <field name="arch" type="xml">
+            <tree string="Establecimientos">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="address_id" string="Establecimiento comercial si exite"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_l10n_hn_establecimiento_form" model="ir.ui.view">
+        <field name="name">l10n_hn.establecimiento.form</field>
+        <field name="model">l10n_hn.establecimiento</field>
+        <field name="arch" type="xml">
+            <form string="Establecimiento">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nombre Comercial"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="address_id" domain="[('type', '=', 'store'), ('parent_id', '=', company_partner_id)]"/>
+                        </group>
+                        <group>
+                            <field name="code"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="company_partner_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Puntos de Emisión" name="puntos_emision">
+                            <field name="punto_emision_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_l10n_hn_establecimiento" model="ir.actions.act_window">
+        <field name="name">Establecimientos</field>
+        <field name="res_model">l10n_hn.establecimiento</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea un nuevo establecimiento fiscal.
+            </p>
+        </field>
+    </record>
+
+    <!-- l10n_hn.punto.emision Views -->
+    <record id="view_l10n_hn_punto_emision_tree" model="ir.ui.view">
+        <field name="name">l10n_hn.punto.emision.tree</field>
+        <field name="model">l10n_hn.punto.emision</field>
+        <field name="arch" type="xml">
+            <tree string="Puntos de Emisión">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="establecimiento_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_l10n_hn_punto_emision_form" model="ir.ui.view">
+        <field name="name">l10n_hn.punto.emision.form</field>
+        <field name="model">l10n_hn.punto.emision</field>
+        <field name="arch" type="xml">
+            <form string="Punto de Emisión">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="establecimiento_id"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_l10n_hn_punto_emision" model="ir.actions.act_window">
+        <field name="name">Puntos de Emisión</field>
+        <field name="res_model">l10n_hn.punto.emision</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea un nuevo punto de emisión fiscal.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem
+        id="menu_l10n_hn_fiscal_config_root"
+        name="CONFIGURACIÓN FISCAL HONDURAS"
+        parent="account.account_account_menu"
+        sequence="99"/>
+
+    <menuitem
+        id="menu_l10n_hn_establecimiento"
+        name="Establecimientos"
+        parent="menu_l10n_hn_fiscal_config_root"
+        action="action_l10n_hn_establecimiento"
+        sequence="10"/>
+
+    <menuitem
+        id="menu_l10n_hn_punto_emision"
+        name="Puntos de Emisión"
+        parent="menu_l10n_hn_fiscal_config_root"
+        action="action_l10n_hn_punto_emision"
+        sequence="20"/>
+
+</odoo>

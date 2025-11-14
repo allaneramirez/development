@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Invoice form view for Customer Invoice -->
+        <record id="invoice_customer_form_view" model="ir.ui.view">
+            <field name="name">Datos fiscales</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                    <page name="fiscal_hn" string="Datos Fiscales Honduras" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal">
+                        <group name="fiscal_hn_row">
+                            <group name="fiscal_hn_l">
+                                <field name="cai"
+                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
+                                <field name="range_start_str"
+                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
+                                <field name="range_end_str"
+                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
+                                <field name="emition"
+                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
+                                <field name="emition_limit"
+                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
+                            </group>
+                            <group name="fiscal_hn_r">
+                                <field name="num_contract_sag"/>
+                                <field name="num_exempt_purchase"/>
+                                <field name="num_contract_exonerated"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

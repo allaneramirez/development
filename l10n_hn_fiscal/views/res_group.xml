@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_show_l10n_hn_fiscal" model="res.groups">
+        <field name="name">Mostrar Datos Fiscales Hondureños</field>
+    </record>
+</odoo>

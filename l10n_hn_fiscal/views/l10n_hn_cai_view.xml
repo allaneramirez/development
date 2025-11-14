@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_l10n_hn_cai_form" model="ir.ui.view">
+            <field name="name">l10n.hn.cai.form</field>
+            <field name="model">l10n_hn.cai</field>
+            <field name="arch" type="xml">
+                <form string="Configuración de CAI">
+                    <header>
+                        <button name="confirm_cai" string="Confirmar" type="object" class="btn-primary"
+                                attrs="{'invisible': [('state', '!=', 'draft')]}"
+                                groups="l10n_hn_fiscal.group_confirm_cai"/>
+                        <button name="action_reset_to_draft" string="Restablecer a Borrador" type="object"
+                                attrs="{'invisible': [('state', '!=', 'confirmed')]}"
+                                groups="l10n_hn_fiscal.group_confirm_cai"/>
+                        <!-- Nuevo botón: Recalcular Último Número -->
+                        <button name="action_recalculate_last_number"
+                                string="Recalcular Último Número"
+                                type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('state', '!=', 'confirmed')]}"
+                                groups="l10n_hn_fiscal.group_confirm_cai"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" placeholder="E.g. XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XX"
+                                       attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="journal_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="active"/>
+                            </group>
+                            <group>
+                                <field name="range_start" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="range_end" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="emition" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="emition_limit" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="declaration" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                        <group string="Configuración de Secuencia">
+                            <group>
+                                <field name="establecimiento_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="punto_emision_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="l10n_latam_document_type_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="digitos_correlativo" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="sequence_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            </group>
+                        </group>
+                        <group string="Seguridad">
+                            <field name="confirmation_hash"/>
+                        </group>
+                        <group string="Información del Diario (Solo Lectura)">
+                            <field name="journal_code"/>
+                            <field name="journal_type"/>
+                        </group>
+                        <group string="Información de la Secuencia (Solo Lectura)">
+                            <field name="sequence_last_number"/>
+                            <field name="remaining_numbers"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree View -->
+        <record id="view_l10n_hn_cai_tree" model="ir.ui.view">
+            <field name="name">l10n.hn.cai.tree</field>
+            <field name="model">l10n_hn.cai</field>
+            <field name="arch" type="xml">
+                <tree string="Configuración de CAI"
+                      decoration-info="state == 'draft'"
+                      decoration-muted="state == 'confirmed'">
+                    <field name="name"/>
+                    <field name="journal_id"/>
+                    <field name="l10n_latam_document_type_id"/>
+                    <field name="emition_limit"/>
+                    <field name="range_start"/>
+                    <field name="range_end"/>
+                    <field name="state"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

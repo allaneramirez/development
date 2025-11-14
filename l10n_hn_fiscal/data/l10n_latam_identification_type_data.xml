@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="it_rtn" model="l10n_latam.identification.type">
+            <field name="name">RTN</field>
+            <field name="description">RRegistro Tributario Nacional Numérico</field>
+            <field name="is_vat" eval="True"/>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+    </data>
+</odoo>
