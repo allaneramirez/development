@@ -243,7 +243,7 @@ class L10nHnCai(models.Model):
 
         # Validate that the sequence is not already used by another active CAI
         if self.sequence_id.active_sar and self.sequence_id.cai:
-             # Check if there is another active CAI using this sequence
+            # Check if there is another active CAI using this sequence
             other_cai = self.env['l10n_hn.cai'].search([
                 ('sequence_id', '=', self.sequence_id.id),
                 ('id', '!=', self.id),
@@ -286,23 +286,28 @@ class L10nHnCai(models.Model):
         }
         self.sequence_id.with_context(allow_cai_write=True).write(sequence_vals)
 
+        # --- MODIFICACIÓN AQUÍ ---
         # Handle date range
-        # Search for an existing date range for the same period to avoid duplicates
+        # Solo buscamos si el rango de fechas ya existe.
         date_range = self.env['ir.sequence.date_range'].search([
             ('sequence_id', '=', self.sequence_id.id),
             ('date_from', '=', self.emition),
             ('date_to', '=', self.emition_limit),
         ], limit=1)
-        
-        if date_range:
-            date_range.write({'number_next_actual': self.range_start})
-        else:
+
+        if not date_range:
+            # Si NO existe, lo creamos, pero NUNCA especificamos
+            # 'number_next_actual'. Dejará el valor que tenga por defecto
+            # o el que ya existiera si la secuencia no es nueva.
             self.env['ir.sequence.date_range'].create({
                 'sequence_id': self.sequence_id.id,
                 'date_from': self.emition,
                 'date_to': self.emition_limit,
-                'number_next_actual': self.range_start,
             })
+
+        # Si 'date_range' ya existe, no hacemos NADA,
+        # respetando así el 'number_next_actual' que ya tiene.
+        # --- FIN DE LA MODIFICACIÓN ---
 
         # Set state confirmed
         self.write({'state': 'confirmed'})

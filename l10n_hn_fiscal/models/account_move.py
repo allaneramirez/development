@@ -117,28 +117,29 @@ class AccountMove(models.Model):
             else:
                 move.amount_in_words = ''
 
-
-    @api.depends('state')
-    def _compute_name(self):
-        for move in self.filtered(lambda m: not m.name and m.state == 'draft'):
-            move.name = '/'
-        return
+#
+#    @api.depends('state')
+#    def _compute_name(self):
+#        for move in self.filtered(lambda m: not m.name and m.state == 'draft'):
+#            move.name = '/'
+#        return
 
     @api.depends('name', 'ref', 'journal_id.type')
     def _compute_l10n_latam_document_number(self):
-        """
-        Calcula el número de documento basado en el tipo de diario,
-        anulando la lógica de l10n_latam_invoice_document.
-        - Para 'compra', usa el campo 'ref'.
-        - Para 'venta', extrae la parte numérica del campo 'name' (manejado por la secuencia nativa de Odoo).
-        """
+        # ... (lógica de compra sin cambios) ...
         for move in self:
             if move.journal_id.type == 'purchase':
                 move.l10n_latam_document_number = move.ref or False
             elif move.journal_id.type == 'sale':
                 if move.name and move.name != '/':
-                    # Extrae todos los dígitos del nombre de la secuencia nativa.
-                    move.l10n_latam_document_number = re.sub(r'\D', '', move.name)
+
+                    # --- MODIFICACIÓN AQUÍ ---
+                    # Antes: re.sub(r'\D', '', move.name)
+                    # Corregido: Extraer solo los dígitos del final
+                    match = re.search(r'(\d+)$', move.name)
+                    move.l10n_latam_document_number = match.group(1) if match else False
+                    # --- FIN DE MODIFICACIÓN ---
+
                 else:
                     move.l10n_latam_document_number = False
             else:
@@ -153,8 +154,17 @@ class AccountMove(models.Model):
         """
         for move in self:
             if move.journal_id.type == 'purchase':
-                move.ref = move.l10n_latam_document_number
+                move.l10n_latam_document_number = move.ref
             elif move.journal_id.type == 'sale':
                 # No hacer nada. Esto es intencional para anular la sobreescritura
                 # del campo 'name' que hace el módulo l10n_latam_invoice_document.
                 pass
+
+    def _get_starting_sequence(self):
+        """
+        Anula la lógica de l10n_latam_invoice_document que ignora la
+        configuración de ir.sequence y devuelve un formato 'prefijo 00000000'.
+        Al llamar a super() directamente, forzamos que Odoo use la
+        lógica nativa, que SÍ lee el 'prefix' y 'padding' de ir.sequence.
+        """
+        return super(AccountMove, self)._get_starting_sequence()
