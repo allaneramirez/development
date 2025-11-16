@@ -277,12 +277,14 @@ class L10nHnCai(models.Model):
             'range_start': self.range_start,
             'range_end': self.range_end,
             'l10n_latam_document_type_id': self.l10n_latam_document_type_id.id,
+            'l10n_hn_establecimiento_code': self.establecimiento_id.code,
+            'l10n_hn_punto_emision_code': self.punto_emision_id.code,
             'prefix': prefix,
             'padding': self.digitos_correlativo,
             'use_date_range': True,
             'active_sar': True,
         }
-        self.sequence_id.write(sequence_vals)
+        self.sequence_id.with_context(allow_cai_write=True).write(sequence_vals)
 
         # Handle date range
         # Search for an existing date range for the same period to avoid duplicates

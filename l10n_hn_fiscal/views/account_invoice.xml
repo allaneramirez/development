@@ -21,6 +21,10 @@
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
                                 <field name="emition_limit"
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
+                                <field name="l10n_hn_establecimiento_code"
+                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
+                                <field name="l10n_hn_punto_emision_code"
+                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
                             </group>
                             <group name="fiscal_hn_r">
                                 <field name="num_contract_sag"/>
@@ -30,6 +34,37 @@
                         </group>
                     </page>
                 </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit from l10n_latam_invoice_document to remove required attribute -->
+        <record id="view_move_form_inherit_l10n_hn_fiscal" model="ir.ui.view">
+            <field name="name">account.move.form.inherit.l10n_hn_fiscal</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="l10n_latam_invoice_document.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='l10n_latam_document_number']" position="replace">
+                    <field name="l10n_latam_document_number"
+                    attrs="{'invisible': ['|', ('l10n_latam_use_documents', '=', False), ('l10n_latam_manual_document_number', '=', False), '|', '|', ('l10n_latam_use_documents', '=', False), ('highest_name', '!=', False), ('state', '!=', 'draft')],
+                            'required': [('l10n_latam_use_documents', '=', True), ('highest_name', '=', False)],
+                            'readonly': [('posted_before', '=', True), ('state', '!=', 'draft')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Journal view to make sequence readonly if fiscalized -->
+        <record id="view_account_journal_form_inherit_l10n_hn_fiscal_sequence" model="ir.ui.view">
+            <field name="name">account.journal.form.inherit.l10n_hn_fiscal.sequence</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <!-- Add the field to the view (invisible) so it can be used in attrs -->
+                <field name="name" position="after">
+                    <field name="l10n_hn_sequence_is_fiscal" invisible="1"/>
+                </field>
+                <field name="sequence_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('l10n_hn_sequence_is_fiscal', '=', True)]}</attribute>
+                </field>
             </field>
         </record>
     </data>

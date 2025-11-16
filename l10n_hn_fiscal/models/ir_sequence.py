@@ -17,6 +17,21 @@ class IrSequence(models.Model):
     range_end_str = fields.Char('Correlativo Final', compute='_get_range_end')
     l10n_latam_document_type_id = fields.Many2one('l10n_latam.document.type', string='Tipo de Documento Fiscal', 
                                                   domain="[('country_id.code', '=', 'HN')]")
+    l10n_hn_establecimiento_code = fields.Char(string='Código de Establecimiento')
+    l10n_hn_punto_emision_code = fields.Char(string='Punto de Emisión')
+
+    def write(self, vals):
+        if not self.env.context.get('allow_cai_write'):
+            for seq in self:
+                if seq.active_sar:
+                    raise UserError(_("Esta secuencia ha sido asociada a un CAI por lo que no puede modificarse, para modificar sus valores antes tiene que modificar el CAI asociado."))
+        return super(IrSequence, self).write(vals)
+
+    def unlink(self):
+        if any(seq.active_sar for seq in self):
+            raise UserError(_("No se puede eliminar una secuencia que está asociada a un CAI activo."))
+        return super(IrSequence, self).unlink()
+
 
     def _get_range_start(self):
         if self.range_start:

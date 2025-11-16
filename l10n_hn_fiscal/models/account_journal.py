@@ -41,3 +41,14 @@ class AccountJournal(models.Model):
                 journal.l10n_hn_cai_id = cai
             else:
                 journal.l10n_hn_cai_id = False
+
+    l10n_hn_sequence_is_fiscal = fields.Boolean(
+        string="Secuencia Fiscalizada",
+        compute='_compute_sequence_is_fiscal',
+        help="Indica si la secuencia de este diario está fiscalizada por un CAI."
+    )
+
+    @api.depends('sequence_id.active_sar')
+    def _compute_sequence_is_fiscal(self):
+        for journal in self:
+            journal.l10n_hn_sequence_is_fiscal = journal.sequence_id.active_sar if journal.sequence_id else False
