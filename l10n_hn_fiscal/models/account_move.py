@@ -20,28 +20,11 @@ class AccountMove(models.Model):
     num_exempt_purchase = fields.Char('Orden de compra exenta')
     l10n_hn_establecimiento_code = fields.Char(string='Código de Establecimiento', store=True, readonly=True)
     l10n_hn_punto_emision_code = fields.Char(string='Punto de Emisión', store=True, readonly=True)
-
-    def _search_l10n_latam_document_number(self, operator, value):
-        """ Search method for l10n_latam_document_number field.
-        The search is made on the 'name' field for sales documents and on the 'ref' field for purchase documents.
-        """
-        if self.env.context.get('journal_type') == 'purchase':
-            return [('ref', operator, value)]
-        if self.env.context.get('journal_type') == 'sale':
-            return [('name', operator, value)]
-        # Fallback for other cases or when context is not available
-        return ['|', ('name', operator, value), ('ref', operator, value)]
-
-    l10n_latam_document_number = fields.Char(
-        string="Número de Documento",
-        compute='_compute_l10n_latam_document_number',
-        inverse='_inverse_l10n_latam_document_number',
+    l10n_latam_document_type_id = fields.Many2one(
+        comodel_name="l10n.latam.document.type",
         store=True,
-        readonly=True,
-        states={'draft': [('readonly', False)]},
-        search='_search_l10n_latam_document_number',
-        help="Para diarios de Venta, es la parte numérica del campo 'Referencia'. "
-             "Para diarios de Compra, es el valor completo del campo 'Referencia de Factura de Proveedor'.")
+        string="Tipo de documento"
+    )
 
     @api.onchange('journal_id')
     def _onchange_journal_id(self):
@@ -66,11 +49,9 @@ class AccountMove(models.Model):
         return {'domain': domain}
 
     def action_post(self):
-        # First, ensure the document number is computed to avoid timing issues with validations.
-        self._compute_l10n_latam_document_number()
 
         for move in self.filtered(
-                lambda m: m.company_id.country_id.code == 'HN' and m.journal_id.l10n_latam_use_documents):
+                lambda m: m.company_id.country_id.code == 'HN'):
             sequence = move.journal_id.sequence_id
             if not (sequence and sequence.active_sar):
                 continue
@@ -84,8 +65,11 @@ class AccountMove(models.Model):
             # 2. Validation: Check if the invoice number is within the authorized range.
             if move.name and move.name != '/':
                 try:
-                    # The compute method has already run, so the value should be up-to-date
-                    invoice_number = int(move.l10n_latam_document_number)
+                    match = re.search(r'(\d+)$', move.name)
+                    if not match:
+                        raise UserError(_('No se pudo extraer la parte numérica del número de factura "%s" para la validación del CAI.') % move.name)
+                    
+                    invoice_number = int(match.group(1))
 
                     if not (sequence.range_start <= invoice_number <= sequence.range_end):
                         raise ValidationError(_(
@@ -116,55 +100,3 @@ class AccountMove(models.Model):
                 move.amount_in_words = move.currency_id.amount_to_text(move.amount_total)
             else:
                 move.amount_in_words = ''
-
-#
-#    @api.depends('state')
-#    def _compute_name(self):
-#        for move in self.filtered(lambda m: not m.name and m.state == 'draft'):
-#            move.name = '/'
-#        return
-
-    @api.depends('name', 'ref', 'journal_id.type')
-    def _compute_l10n_latam_document_number(self):
-        # ... (lógica de compra sin cambios) ...
-        for move in self:
-            if move.journal_id.type == 'purchase':
-                move.l10n_latam_document_number = move.ref or False
-            elif move.journal_id.type == 'sale':
-                if move.name and move.name != '/':
-
-                    # --- MODIFICACIÓN AQUÍ ---
-                    # Antes: re.sub(r'\D', '', move.name)
-                    # Corregido: Extraer solo los dígitos del final
-                    match = re.search(r'(\d+)$', move.name)
-                    move.l10n_latam_document_number = match.group(1) if match else False
-                    # --- FIN DE MODIFICACIÓN ---
-
-                else:
-                    move.l10n_latam_document_number = False
-            else:
-                move.l10n_latam_document_number = False
-
-    def _inverse_l10n_latam_document_number(self):
-        """
-        Sobreescribe la lógica de l10n_latam_invoice_document para controlar
-        manualmente el flujo de datos.
-        - Para 'compra', actualiza el campo 'ref'.
-        - Para 'venta', no hace NADA para permitir que la secuencia nativa de Odoo controle el campo 'name'.
-        """
-        for move in self:
-            if move.journal_id.type == 'purchase':
-                move.l10n_latam_document_number = move.ref
-            elif move.journal_id.type == 'sale':
-                # No hacer nada. Esto es intencional para anular la sobreescritura
-                # del campo 'name' que hace el módulo l10n_latam_invoice_document.
-                pass
-
-    def _get_starting_sequence(self):
-        """
-        Anula la lógica de l10n_latam_invoice_document que ignora la
-        configuración de ir.sequence y devuelve un formato 'prefijo 00000000'.
-        Al llamar a super() directamente, forzamos que Odoo use la
-        lógica nativa, que SÍ lee el 'prefix' y 'padding' de ir.sequence.
-        """
-        return super(AccountMove, self)._get_starting_sequence()

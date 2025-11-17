@@ -29,10 +29,18 @@ class AccountJournal(models.Model):
         help='Configuración de CAI activa para este diario.'
     )
 
-    @api.depends('l10n_latam_use_documents')
+    l10n_latam_document_type_id = fields.Many2one(
+        comodel_name='l10n.latam.document.type',
+        string='Fiscal Document for Sales',
+        store=True,
+        readonly=True,
+        help='Documento Fiscal a utilizar en este diario'
+    )
+
+    @api.depends('l10n_hn_cai_id')
     def _compute_l10n_hn_cai_id(self):
         for journal in self:
-            if journal.l10n_latam_use_documents:
+            if journal.l10n_hn_cai_id:
                 cai = self.env['l10n_hn.cai'].search([
                     ('journal_id', '=', journal.id),
                     ('state', '=', 'confirmed'),

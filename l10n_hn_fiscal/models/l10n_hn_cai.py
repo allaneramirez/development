@@ -27,7 +27,6 @@ class L10nHnCai(models.Model):
 
     journal_id = fields.Many2one(
         'account.journal', string='Diario', required=True,
-        domain="[('type', '=', 'sale'), ('l10n_latam_use_documents', '=', True)]",
         help="Diario contable al que se aplicará esta configuración de CAI."
     )
     sequence_id = fields.Many2one(
@@ -36,7 +35,7 @@ class L10nHnCai(models.Model):
     )
 
     l10n_latam_document_type_id = fields.Many2one(
-        'l10n_latam.document.type', string='Tipo de Documento Fiscal',
+        'l10n.latam.document.type', string='Tipo de Documento Fiscal',
         required=True, domain="[('country_id.code', '=', 'HN')]",
         help="Tipo de documento de LATAM que corresponde a este CAI."
     )
