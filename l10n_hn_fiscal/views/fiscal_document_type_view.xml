@@ -2,9 +2,9 @@
 <odoo>
     <data>
 
-        <record id="l10n_latam_document_type_view_tree" model="ir.ui.view">
-            <field name="name">l10n.latam.document.type.tree</field>
-            <field name="model">l10n.latam.document.type</field>
+        <record id="fiscal_document_type_view_tree" model="ir.ui.view">
+            <field name="name">fiscal_document_type.tree</field>
+            <field name="model">fiscal_document_type</field>
             <field name="arch" type="xml">
                 <tree string="Tipos de Documento Fiscal">
                     <field name="sequence" widget="handle"/>
@@ -18,19 +18,22 @@
             </field>
         </record>
 
-        <record id="l10n_latam_document_type_view_form" model="ir.ui.view">
-            <field name="name">l10n.latam.document.type.form</field>
-            <field name="model">l10n.latam.document.type</field>
+        <record id="fiscal_document_type_view_form" model="ir.ui.view">
+            <field name="name">fiscal_document_type.form</field>
+            <field name="model">fiscal_document_type</field>
             <field name="arch" type="xml">
                 <form string="Tipo de Documento Fiscal">
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                            <button name="toggle_active" type="object"
-                                    class="oe_stat_button" icon="fa-archive">
-                                <field name="active" widget="boolean_toggle"
-                                    options='{"terminology": "archive"}'/>
+                            <button name="toggle_active"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    attrs="{'invisible': [('id','=',False)]}">
+                                <i class="fa" t-att-class="record.active ? 'fa-archive' : 'fa-inbox'"></i>
+                                <span t-attf="">#{record.active ? 'Archive' : 'Unarchive'}</span>
                             </button>
                         </div>
+
                         <div class="oe_title">
                             <label for="name" class="oe_edit_only"/>
                             <h1><field name="name" placeholder="Nombre del Tipo de Documento"/></h1>
@@ -56,10 +59,10 @@
             </field>
         </record>
 
-        <!-- Action for l10n.latam.document.type -->
-        <record id="l10n_latam_document_type_action" model="ir.actions.act_window">
+        <!-- Action for fiscal_document_type -->
+        <record id="fiscal_document_type_action" model="ir.actions.act_window">
             <field name="name">Tipos de Documento</field>
-            <field name="res_model">l10n.latam.document.type</field>
+            <field name="res_model">fiscal_document_type</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
@@ -69,10 +72,10 @@
         </record>
 
         <!-- Menu Item -->
-        <menuitem id="menu_l10n_latam_document_type"
+        <menuitem id="menu_fiscal_document_type"
                   name="Tipos de Documento"
                   parent="l10n_hn_fiscal.menu_l10n_hn_fiscal_config_root"
-                  action="l10n_latam_document_type_action"
+                  action="fiscal_document_type_action"
                   sequence="30"
                   groups="account.group_account_manager"/>
 

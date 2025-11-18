@@ -18,7 +18,7 @@ class IrSequence(models.Model):
     range_end = fields.Integer('Numero Final')
     range_start_str = fields.Char('Correlativo Inicial', compute='_get_range_start')
     range_end_str = fields.Char('Correlativo Final', compute='_get_range_end')
-    l10n_latam_document_type_id = fields.Many2one('l10n.latam.document.type', string='Tipo de Documento Fiscal',
+    fiscal_document_type_id = fields.Many2one('fiscal_document_type', string='Tipo de Documento Fiscal',
                                                   domain="[('country_id.code', '=', 'HN')]")
     l10n_hn_establecimiento_code = fields.Char(string='Código de Establecimiento')
     l10n_hn_punto_emision_code = fields.Char(string='Punto de Emisión')

@@ -44,20 +44,23 @@
                                     <br/>
                                     <h5>
                                         <b>
-                                            <span t-if="o.move_type == 'out_invoice' and o.state == 'posted' and not o.nota_debito">
+                                            <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">
                                                 Factura
                                             </span>
+                                            <!--
                                             <span t-if="o.move_type == 'out_invoice' and o.state == 'draft' and not o.nota_debito">Factura
                                                 borrador
                                             </span>
                                             <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel' and not o.nota_debito">Factura
                                                 cancelada
                                             </span>
+
                                             <span t-if="o.move_type == 'out_refund' and not o.nota_debito">Nota de Crédito</span>
                                             <span t-if="o.move_type == 'in_refund' and not o.nota_debito">Nota de Crédito de Proveedor</span>
                                             <span t-if="o.move_type == 'in_invoice' and not o.nota_debito">Factura de Proveedor</span>
                                             <span t-if="o.nota_debito">Nota de Débito</span>
                                             <span t-field="o.name"/>
+                                            -->
                                         </b>
                                     </h5>
                                     Rango Autorizado desde:
@@ -357,7 +360,7 @@
                                         </div>
                                     </div>
                                     <div class="col-6 mt-1 text-right">
-                                        <span>Original / Cliente, Copia1 / Emisor, Copia2 / Contabilidad</span>
+                                        <span><t t-esc="_('Original / Cliente, Copia1 / Emisor, Copia2 / Contabilidad')"/></span>
                                     </div>
                                 </div>
                                 <div class="row">

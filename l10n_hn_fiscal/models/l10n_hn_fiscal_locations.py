@@ -61,12 +61,14 @@ class L10nHnEstablecimiento(models.Model):
 
 
     def unlink(self):
-        journals = self.env['account.journal'].search([('l10n_hn_establecimiento_id', 'in', self.ids)])
-        if journals:
+        cais = self.env['l10n_hn.cai'].search([('establecimiento_id','=',self.id)])
+        if cais:
+            cai_names = ', '.join(cais.mapped('name'))
             raise UserError(
-                _('No puede eliminar un establecimiento que está siendo utilizado en uno o más diarios contables.'))
+                _('No puede eliminar el establecimiento "%s" porque ya esta siendo utilizado en las siguientes configuraciones de CAI: %s') %
+                (self.name, cai_names)
+            )
         return super(L10nHnEstablecimiento, self).unlink()
-
 
 class L10nHnPuntoEmision(models.Model):
     _name = 'l10n_hn.punto.emision'
@@ -85,10 +87,11 @@ class L10nHnPuntoEmision(models.Model):
     ]
 
     def unlink(self):
-        # This logic will be completed once the journal model is modified.
-        # For now, we prepare the structure.
-        journals = self.env['account.journal'].search([('l10n_hn_punto_emision_id', 'in', self.ids)])
-        if journals:
+        cais = self.env['l10n_hn.cai'].search([('punto_emision_id', '=', self.id)])
+        if cais:
+            cai_names = ', '.join(cais.mapped('name'))
             raise UserError(
-                _('No puede eliminar un punto de emisión que está siendo utilizado en uno o más diarios contables.'))
+                _('No puede eliminar el establecimiento "%s" porque ya esta siendo utilizado en las siguientes configuraciones de CAI: %s') %
+                (self.name, cai_names)
+            )
         return super(L10nHnPuntoEmision, self).unlink()

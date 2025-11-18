@@ -34,8 +34,8 @@ class L10nHnCai(models.Model):
         help="Secuencia que será actualizada con los datos de este CAI al confirmar."
     )
 
-    l10n_latam_document_type_id = fields.Many2one(
-        'l10n.latam.document.type', string='Tipo de Documento Fiscal',
+    fiscal_document_type_id = fields.Many2one(
+        'fiscal_document_type', string='Tipo de Documento Fiscal',
         required=True, domain="[('country_id.code', '=', 'HN')]",
         help="Tipo de documento de LATAM que corresponde a este CAI."
     )
@@ -262,7 +262,7 @@ class L10nHnCai(models.Model):
         prefix = '-'.join(filter(None, [
             self.establecimiento_id.code,
             self.punto_emision_id.code,
-            self.l10n_latam_document_type_id.code
+            self.fiscal_document_type_id.code
         ]))
         if prefix:
             prefix += '-'
@@ -275,7 +275,7 @@ class L10nHnCai(models.Model):
             'emition_limit': self.emition_limit,
             'range_start': self.range_start,
             'range_end': self.range_end,
-            'l10n_latam_document_type_id': self.l10n_latam_document_type_id.id,
+            'fiscal_document_type_id': self.fiscal_document_type_id.id,
             'l10n_hn_establecimiento_code': self.establecimiento_id.code,
             'l10n_hn_punto_emision_code': self.punto_emision_id.code,
             'prefix': prefix,

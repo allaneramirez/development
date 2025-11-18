@@ -20,8 +20,8 @@ class AccountMove(models.Model):
     num_exempt_purchase = fields.Char('Orden de compra exenta')
     l10n_hn_establecimiento_code = fields.Char(string='Código de Establecimiento', store=True, readonly=True)
     l10n_hn_punto_emision_code = fields.Char(string='Punto de Emisión', store=True, readonly=True)
-    l10n_latam_document_type_id = fields.Many2one(
-        comodel_name="l10n.latam.document.type",
+    fiscal_document_type_id = fields.Many2one(
+        comodel_name="fiscal_document_type",
         store=True,
         string="Tipo de documento"
     )
@@ -38,14 +38,14 @@ class AccountMove(models.Model):
 
             if cai:
                 # A CAI was found, set the document type and restrict the domain
-                self.l10n_latam_document_type_id = cai.l10n_latam_document_type_id.id
-                domain = {'l10n_latam_document_type_id': [('id', '=', cai.l10n_latam_document_type_id.id)]}
+                self.fiscal_document_type_id = cai.fiscal_document_type_id.id
+                domain = {'fiscal_document_type_id': [('id', '=', cai.fiscal_document_type_id.id)]}
                 return {'domain': domain}
 
-        if self.l10n_latam_document_type_id and self.l10n_latam_document_type_id.country_id.code == 'HN':
-            self.l10n_latam_document_type_id = False
+        if self.fiscal_document_type_id and self.fiscal_document_type_id.country_id.code == 'HN':
+            self.fiscal_document_type_id = False
 
-        domain = {'l10n_latam_document_type_id': [('country_id.code', '=', 'HN')]}
+        domain = {'fiscal_document_type_id': [('country_id.code', '=', 'HN')]}
         return {'domain': domain}
 
     def action_post(self):
@@ -59,7 +59,7 @@ class AccountMove(models.Model):
             # 1. Validation: Check if the invoice date is within the CAI's validity period.
             if move.invoice_date and move.invoice_date > sequence.emition_limit:
                 raise ValidationError(_(
-                    'La fecha de la factura (%s) es posterior a la fecha límite de emisión del CAI (%s).') % (
+                    'La fecha de la factura (%s) es posterior a la fecha límite para emisión del CAI (%s).') % (
                                           move.invoice_date, sequence.emition_limit))
 
             # 2. Validation: Check if the invoice number is within the authorized range.
@@ -80,7 +80,7 @@ class AccountMove(models.Model):
                         'No se pudo extraer el número de la factura "%s". El formato no es un número válido para la validación del CAI.') % move.name)
 
             # 3. Data Population: Enforce document type and copy fiscal data from the sequence to the move.
-            move.l10n_latam_document_type_id = sequence.l10n_latam_document_type_id.id
+            move.fiscal_document_type_id = sequence.fiscal_document_type_id.id
             move.cai = sequence.cai
             move.emition = sequence.emition
             move.emition_limit = sequence.emition_limit

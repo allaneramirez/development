@@ -8,9 +8,9 @@
             <notebook position="inside">
                 <page string="Información Fiscal Honduras" name="l10n_hn_fiscal_info">
                     <group>
-                        <field name="l10n_hn_establecimiento_id"/>
-                        <field name="l10n_hn_punto_emision_id"/>
                         <field name="l10n_hn_cai_id" readonly="1"/>
+                        <field name="fiscal_document_type_id" readonly="1"/>
+                        <field name="l10n_hn_sequence_is_fiscal" readonly="1"/>
                     </group>
                 </page>
             </notebook>

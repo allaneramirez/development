@@ -9,7 +9,7 @@
                 <xpath expr="//field[@name='implementation']" position="after">
                     <field name="active_sar" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
                     <field name="cai" attrs="{'invisible': [('active_sar', '=', False)]}" readonly="1" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
-                    <field name="l10n_latam_document_type_id" attrs="{'invisible': [('active_sar', '=', False)]}" readonly="1" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+                    <field name="fiscal_document_type_id" attrs="{'invisible': [('active_sar', '=', False)]}" readonly="1" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
                     <field name="range_start" attrs="{'invisible': [('active_sar', '=', False)]}" readonly="1" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
                     <field name="range_end" attrs="{'invisible': [('active_sar', '=', False)]}" readonly="1" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
                 </xpath>

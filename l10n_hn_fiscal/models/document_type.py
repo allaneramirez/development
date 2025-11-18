@@ -3,9 +3,9 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 
-class L10nLatamDocumentType(models.Model):
-    _name = 'l10n.latam.document.type'
-    _description = 'Tipo de Documento Fiscal para LATAM (versión HN)'
+class FiscalDocumentType(models.Model):
+    _name = 'fiscal_document_type'
+    _description = 'Tipo de Documento Fiscal'
     _order = 'sequence'
 
     sequence = fields.Integer(default=10)

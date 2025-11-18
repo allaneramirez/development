@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="dt_factura" model="fiscal_document_type">
+            <field name="name">Factura</field>
+            <field name="code">01</field>
+            <field name="internal_type">invoice</field>
+            <field name="description">Documento fiscal que respalda la transferencia de bienes y/o prestación de servicios. Su emisión sustenta el crédito fiscal del Impuesto Sobre Ventas y los costos o gastos para el Impuesto Sobre la Renta. (Artículo 10 del Reglamento).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_factura_prevalorada" model="fiscal_document_type">
+            <field name="name">Factura Prevalorada</field>
+            <field name="code">10</field>
+            <field name="description">Comprobante fiscal que contiene de forma preimpresa el valor del bien o servicio para consumidores finales. No requiere consignar los datos del comprador. Utilizado en productos o servicios de consumo masivo con precios fijos. (Artículo 15 y 16 del Reglamento, reformado por Ac. 609-2017).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_ticket" model="fiscal_document_type">
+            <field name="name">Ticket</field>
+            <field name="code">09</field>
+            <field name="description">Comprobante fiscal que respalda la transferencia de bienes y/o prestación de servicios a consumidores finales, emitido a través de máquinas registradoras autorizadas. (Artículo 17 del Reglamento, reformado por Ac. 609-2017).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_recibo_honorarios" model="fiscal_document_type">
+            <field name="name">Recibo por Honorarios Profesionales</field>
+            <field name="code">04</field>
+            <field name="description">Comprobante fiscal que respalda los ingresos por honorarios de personas naturales por la prestación de servicios en el ejercicio de cualquier profesión, arte, ciencia u oficio. (Artículo 18 del Reglamento).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_boleta_compra" model="fiscal_document_type">
+            <field name="name">Boleta de Compra</field>
+            <field name="code">11</field>
+            <field name="description">Comprobante fiscal emitido por el adquirente para respaldar costos y gastos por la compra de bienes o prestación de servicios de mano de obra no calificada, obtenidos de personas naturales. No da derecho a crédito fiscal de ISV. (Artículo 20 y 22 del Reglamento, reformado por Ac. 609-2017).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_constancia_donacion" model="fiscal_document_type">
+            <field name="name">Constancia de Donación</field>
+            <field name="code">12</field>
+            <field name="description">Comprobante fiscal emitido por entidades autorizadas para justificar las deducciones y respaldar los legados y donaciones otorgados. (Artículo 23 del Reglamento, reformado por Ac. 609-2017).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_nota_credito" model="fiscal_document_type">
+            <field name="name">Nota de Crédito</field>
+            <field name="code">06</field>
+            <field name="internal_type">credit_note</field>
+            <field name="description">Documento complementario que sustenta operaciones contables vinculadas a un Comprobante Fiscal. Permite anular operaciones, aceptar devoluciones y conceder descuentos con posterioridad a la emisión del comprobante original. (Artículo 25 del Reglamento, reformado por Ac. 609-2017).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_nota_debito" model="fiscal_document_type">
+            <field name="name">Nota de Débito</field>
+            <field name="code">07</field>
+            <field name="internal_type">debit_note</field>
+            <field name="description">Documento complementario que sustenta operaciones contables vinculadas a un Comprobante Fiscal, respaldando un ajuste a cuenta de terceros o propia. (Artículo 27 del Reglamento, reformado por Ac. 609-2017).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_guia_remision" model="fiscal_document_type">
+            <field name="name">Guía de Remisión</field>
+            <field name="code">08</field>
+            <field name="description">Documento complementario que sustenta el traslado de bienes o mercancías dentro del territorio nacional. (Artículo 29 del Reglamento, reformado por Ac. 609-2017).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+
+        <record id="dt_comprobante_retencion" model="fiscal_document_type">
+            <field name="name">Comprobante de Retención</field>
+            <field name="code">05</field>
+            <field name="description">Documento complementario que acredita las retenciones de tributos realizadas por los Agentes de Retención. (Artículo 33 del Reglamento, reformado por Ac. 609-2017).</field>
+            <field name="country_id" ref="base.hn"/>
+        </record>
+    </data>
+</odoo>

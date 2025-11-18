@@ -8,8 +8,9 @@
             <tree string="Establecimientos">
                 <field name="name"/>
                 <field name="code"/>
-                <field name="address_id" string="Establecimiento comercial si exite"/>
+                <field name="address_id" string="Domicilio Fiscal" domain="[('type', '=', 'store'), ('parent_id', '=', company_partner_id)]"/>
                 <field name="company_id"/>
+                <field name="company_partner_id" invisible="1"/>
             </tree>
         </field>
     </record>

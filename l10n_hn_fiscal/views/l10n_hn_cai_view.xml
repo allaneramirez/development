@@ -48,7 +48,7 @@
                             <group>
                                 <field name="establecimiento_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                                 <field name="punto_emision_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-                                <field name="l10n_latam_document_type_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                                <field name="fiscal_document_type_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
                             </group>
                             <group>
                                 <field name="digitos_correlativo" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
@@ -81,7 +81,7 @@
                       decoration-muted="state == 'confirmed'">
                     <field name="name"/>
                     <field name="journal_id"/>
-                    <field name="l10n_latam_document_type_id"/>
+                    <field name="fiscal_document_type_id"/>
                     <field name="emition_limit"/>
                     <field name="range_start"/>
                     <field name="range_end"/>
