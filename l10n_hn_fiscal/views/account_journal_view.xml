@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.view_account_journal_form"/>
         <field name="arch" type="xml">
             <notebook position="inside">
-                <page string="Información Fiscal Honduras" name="l10n_hn_fiscal_info">
+                <page string="Información Fiscal Honduras" name="l10n_hn_fiscal_info" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal">
                     <group>
                         <field name="l10n_hn_cai_id" readonly="1"/>
                         <field name="fiscal_document_type_id" readonly="1"/>

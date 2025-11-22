@@ -9,8 +9,11 @@
             <field name="arch" type="xml">
 
                  <xpath expr="//div[@name='journal_div']" position="after">
+                    <field name="has_cai" invisible="1" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
                     <field name="fiscal_document_type_id"
-                           options="{'no_open': True, 'no_create': True}"/>
+                           options="{'no_open': True, 'no_create': True}"
+                           attrs="{'readonly': ['|', ('state', '=', 'posted'), ('has_cai', '=', True)]}"
+                           groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
                 </xpath>
 
                 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
@@ -35,11 +38,9 @@
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
                                 <field name="l10n_hn_punto_emision_code"
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
-                                <field name="num_contract_sag"
+                                <field name="number_sag_hn"
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
-                                <field name="num_exempt_purchase"
-                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
-                                <field name="num_contract_exonerated"
+                                <field name="number_oce_hn"
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
                             </group>
                         </group>
@@ -55,12 +56,13 @@
             <field name="inherit_id" ref="account.view_account_invoice_filter"/>
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
-                    <field name="fiscal_document_type_id"/>
+                    <field name="fiscal_document_type_id" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
                 </field>
-                <group>
+                <xpath expr="//search" position="inside">
                     <filter string="Document Type" name="fiscal_document_type_id"
-                            context="{'group_by':'fiscal_document_type_id'}"/>
-                </group>
+                            context="{'group_by':'fiscal_document_type_id'}"
+                            groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+                </xpath>
             </field>
         </record>
 
@@ -70,12 +72,13 @@
             <field name="inherit_id" ref="account.view_account_move_filter"/>
             <field name="arch" type="xml">
                 <field name="partner_id" position="after">
-                    <field name="fiscal_document_type_id"/>
+                    <field name="fiscal_document_type_id" groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
                 </field>
-                <group>
+                <xpath expr="//search" position="inside">
                     <filter string="Document Type" name="fiscal_document_type_id"
-                            context="{'group_by':'fiscal_document_type_id'}"/>
-                </group>
+                            context="{'group_by':'fiscal_document_type_id'}"
+                            groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+                </xpath>
             </field>
         </record>
 

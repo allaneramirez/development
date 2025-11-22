@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import api, fields, models, _
+from odoo import fields, models
 
 class L10nHnCaiResetWizard(models.TransientModel):
     _name = 'l10n_hn.cai.reset.wizard'

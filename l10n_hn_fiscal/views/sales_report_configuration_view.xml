@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista Lista -->
+        <record id="view_sales_report_configuration_tree" model="ir.ui.view">
+            <field name="name">sales.report.configuration.tree</field>
+            <field name="model">sales_report_configuration</field>
+            <field name="arch" type="xml">
+                <tree string="Configuración de Reportes">
+                    <field name="name"/>
+                    <field name="report_name"/>
+                    <field name="report_taxes" widget="many2many_tags"/>
+                    <field name="journal_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Formulario -->
+        <record id="view_sales_report_configuration_form" model="ir.ui.view">
+            <field name="name">sales.report.configuration.form</field>
+            <field name="model">sales_report_configuration</field>
+            <field name="arch" type="xml">
+                <form string="Configuración de Reporte">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_generate_sales_report" 
+                                    type="object" 
+                                    class="oe_stat_button" 
+                                    icon="fa-file-pdf-o"
+                                    attrs="{'invisible': [('report_name', '!=', 'sales_report')]}">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Generar</span>
+                                    <span class="o_stat_text">Reporte</span>
+                                </div>
+                            </button>
+                            <button name="action_generate_purchase_report" 
+                                    type="object" 
+                                    class="oe_stat_button" 
+                                    icon="fa-file-pdf-o"
+                                    attrs="{'invisible': [('report_name', '!=', 'purchase_report')]}">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Generar</span>
+                                    <span class="o_stat_text">Reporte</span>
+                                </div>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="report_name" options="{'no_create': True}"/>
+                            </group>
+                            <group>
+                                <field name="allowed_tax_use" invisible="1"/>
+                                <field name="allowed_journal_type" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Impuestos">
+                                <field name="report_taxes"
+                                       widget="many2many_tags"
+                                       options="{'no_create': True}"
+                                       domain="[('type_tax_use', '=', allowed_tax_use)]"/>
+                            </group>
+                            <group string="Diarios">
+                                <field name="journal_ids"
+                                       widget="many2many_tags"
+                                       options="{'no_create': True}"
+                                       domain="[('type', '=', allowed_journal_type)]"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Búsqueda -->
+        <record id="view_sales_report_configuration_search" model="ir.ui.view">
+            <field name="name">sales.report.configuration.search</field>
+            <field name="model">sales_report_configuration</field>
+            <field name="arch" type="xml">
+                <search string="Configuración de Reportes">
+                    <field name="name"/>
+                    <field name="report_name"/>
+                    <filter string="Reporte de Ventas" name="sales_report" domain="[('report_name', '=', 'sales_report')]"/>
+                    <filter string="Reporte de Compras" name="purchase_report" domain="[('report_name', '=', 'purchase_report')]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Acción -->
+        <record id="action_sales_report_configuration" model="ir.actions.act_window">
+            <field name="name">Configuración de Registro de Compras y Ventas</field>
+            <field name="res_model">sales_report_configuration</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Crea una nueva configuración de reporte
+                </p>
+                <p>
+                    Configura los impuestos y diarios que se utilizarán en los reportes de compras y ventas.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menú -->
+        <menuitem id="menu_sales_report_configuration"
+                  name="Configuración de Registro de Compras y Ventas"
+                  parent="l10n_hn_fiscal.menu_l10n_hn_fiscal_config_root"
+                  action="action_sales_report_configuration"
+                  sequence="100"
+                  groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+    </data>
+</odoo>
+

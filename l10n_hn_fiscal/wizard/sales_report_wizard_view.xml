@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sales_report_wizard_form" model="ir.ui.view">
+            <field name="name">sales.report.wizard.form</field>
+            <field name="model">sales_report_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generar Reporte de Ventas">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="config_id" options="{'no_create': True, 'no_open': True}" readonly="1"/>
+                                <field name="folio_inicial"/>
+                            </group>
+                            <group>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                        </group>
+                        <!-- Campos computed invisibles para usar en attrs -->
+                        <field name="has_taxes" invisible="1"/>
+                        <field name="has_journals" invisible="1"/>
+                        <field name="archivo" invisible="1"/>
+                        <field name="name" invisible="1"/>
+                        <group string="Configuración del Reporte" attrs="{'invisible': [('config_id', '=', False)]}">
+                            <group string="Impuestos Configurados">
+                                <field name="config_id" invisible="1"/>
+                                <field name="taxes_display" readonly="1" attrs="{'invisible': [('has_taxes', '=', False)]}" widget="text"/>
+                                <label for="taxes_display" attrs="{'invisible': [('has_taxes', '=', False)]}" string=""/>
+                                <div class="text-muted" attrs="{'invisible': [('has_taxes', '=', True)]}">
+                                    No hay impuestos configurados
+                                </div>
+                            </group>
+                            <group string="Diarios Configurados">
+                                <field name="journals_display" readonly="1" attrs="{'invisible': [('has_journals', '=', False)]}" widget="text"/>
+                                <label for="journals_display" attrs="{'invisible': [('has_journals', '=', False)]}" string=""/>
+                                <div class="text-muted" attrs="{'invisible': [('has_journals', '=', True)]}">
+                                    Todos los diarios de venta
+                                </div>
+                            </group>
+                        </group>
+                        <group string="Archivo Excel" attrs="{'invisible': [('archivo', '=', False)]}">
+                            <field name="archivo" filename="name" widget="binary" string="Descargar Excel"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Generar PDF" 
+                                name="action_generate_report" 
+                                type="object" 
+                                class="btn-primary"
+                                style="background-color: #dc3545; color: white; border-color: #dc3545; margin-right: 5px;"/>
+                        <button string="Generar Excel" 
+                                name="action_generate_excel" 
+                                type="object" 
+                                class="btn-primary"
+                                style="background-color: #28a745; color: white; border-color: #28a745; margin-right: 5px;"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sales_report_wizard" model="ir.actions.act_window">
+            <field name="name">Generar Reporte de Ventas</field>
+            <field name="res_model">sales_report_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
+

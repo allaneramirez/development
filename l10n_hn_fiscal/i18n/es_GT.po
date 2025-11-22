@@ -1,0 +1,2081 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_hn_fiscal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-22 07:48+0000\n"
+"PO-Revision-Date: 2025-11-22 01:51-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_GT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "#cuenta:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>CAI de Factura Original:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>Cliente:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>Facturado por:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>Fecha de Emision:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>MOTIVO:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>Moneda:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>No. Registro SAG:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>No. de Factura Relacionada:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>No. de Orden de Compra Exonerada:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>RTN/ID:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>Termino de Pago:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<b>Vence:</b>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"<br/>\n"
+"                                    CAI:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"<br/>\n"
+"                                    Email:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"<br/>\n"
+"                                    RTN:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"<br/>\n"
+"                                    Tel."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"<br/>\n"
+"                                    Website:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "<br/>RTN:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span class=\"ml-1\">Comentarios:</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span class=\"mr16\" style=\"font-weight: normal;\">Subtotal</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.res_config_settings_view_form_inherit
+msgid "<span class=\"o_form_label\">Reporte de Factura de Venta</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_configuration_form
+msgid ""
+"<span class=\"o_stat_text\">Generar</span>\n"
+"                                    <span class=\"o_stat_text\">Reporte</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"<span groups=\"account.group_show_line_subtotals_tax_excluded\">Monto</span>\n"
+"                                        <span "
+"groups=\"account.group_show_line_subtotals_tax_included\">Precio total\n"
+"                                        </span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>#No.</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>B/S</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>Cantidad</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>Descripcion</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>Disc.%</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>Documento origen</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>Impuestos</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>Original / Cliente, Copia1 / Emisor, Copia2 / Contabilidad</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<span>Precio</span>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"<strong class=\"ml-1\">\n"
+"                                                <span>Detalle de cuenta bancaria:\n"
+"                                                </span>\n"
+"                                            </strong>\n"
+"                                            <br/>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>Descuento y rebajas</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>Direccion de Entrega:</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>Direccion de Factura:</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "<strong>Expresado en Lempiras</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>ISV 15%</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>ISV 18%</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>Importe Gravado</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid ""
+"<strong>Período:</strong> \n"
+"                                Del"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>SUBTOTAL</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>Saldo</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>TOTAL</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "<strong>TOTALES:</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>Total Exento</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "<strong>Total Exonerado</strong>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_needaction
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_ids
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_exception_decoration
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_state
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_type_icon
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__active
+msgid "Activo"
+msgstr "Activo"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__allowed_journal_type
+msgid "Allowed Journal Type"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__allowed_tax_use
+msgid "Allowed Tax Use"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_fiscal_document_type__internal_type
+msgid ""
+"Analog to odoo account.move.move_type but with more options allowing to identify the kind of "
+"document we are working with. (not only related to account.move, could be for documents of "
+"other models like stock.picking)"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.actions.act_window,help:l10n_hn_fiscal.action_l10n_hn_cai
+msgid ""
+"Aquí puedes gestionar las autorizaciones de impresión (CAI) para tus\n"
+"                documentos fiscales. Cada registro de CAI debe ser confirmado para\n"
+"                propagar sus datos a la secuencia correspondiente."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__archivo
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__archivo
+msgid "Archivo"
+msgstr "Archivo"
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Archivo Excel"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_l10n_hn_cai_reset_wizard
+msgid "Asistente para Restablecer CAI a Borrador"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_attachment_count
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__l10n_hn_cai__state__draft
+msgid "Borrador"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__cai
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__cai
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__cai
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__cai
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard__cai_id
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "CAI"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_journal__l10n_hn_cai_id
+msgid "CAI Activo"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__cai_supplier
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__cai_supplier
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__cai_supplier
+msgid "CAI Supplier"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_l10n_hn_fiscal_config_root
+msgid "CONFIGURACIÓN FISCAL HONDURAS"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__declaration
+msgid "Campo para la declaración fiscal, si aplica."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_reset_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__remaining_numbers
+msgid "Cantidad de números fiscales disponibles en el rango de CAI actual."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__name
+msgid "Clave de Autorización de Impresión otorgada por la autoridad fiscal."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__company_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__company_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__company_id
+msgid "Compañía"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__company_id
+msgid "Compañía a la que pertenece este CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__sales_report_configuration__allowed_journal_type__purchase
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__sales_report_configuration__allowed_tax_use__purchase
+msgid "Compras"
+msgstr "Compras"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.actions.act_window,help:l10n_hn_fiscal.action_sales_report_configuration
+msgid ""
+"Configura los impuestos y diarios que se utilizarán en los reportes de compras y ventas."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__config_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__config_id
+msgid "Configuración"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.act_window,name:l10n_hn_fiscal.action_l10n_hn_cai
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_sequence_cai
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_tree
+msgid "Configuración de CAI"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_account_journal__l10n_hn_cai_id
+msgid "Configuración de CAI activa para este diario."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_l10n_hn_cai
+msgid "Configuración de CAI para Honduras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.act_window,name:l10n_hn_fiscal.action_sales_report_configuration
+#: model:ir.model,name:l10n_hn_fiscal.model_sales_report_configuration
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_sales_report_configuration
+msgid "Configuración de Registro de Compras y Ventas"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_configuration_form
+msgid "Configuración de Reporte"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_configuration_search
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_configuration_tree
+msgid "Configuración de Reportes"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_form
+msgid "Configuración de Secuencia"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Configuración del Reporte"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__l10n_hn_cai__state__confirmed
+msgid "Confirmado"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_form
+msgid "Confirmar"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_reset_wizard_form
+msgid "Confirmar Restablecimiento"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__range_end_str
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__range_end_str
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__range_end_str
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__range_end_str
+msgid "Correlativo Final"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__range_start_str
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__range_start_str
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__range_start_str
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__range_start_str
+msgid "Correlativo Inicial"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.actions.act_window,help:l10n_hn_fiscal.action_l10n_hn_establecimiento
+msgid "Crea un nuevo establecimiento fiscal."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.actions.act_window,help:l10n_hn_fiscal.action_l10n_hn_punto_emision
+msgid "Crea un nuevo punto de emisión fiscal."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.actions.act_window,help:l10n_hn_fiscal.action_l10n_hn_cai
+msgid "Crea una nueva configuración de CAI"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.actions.act_window,help:l10n_hn_fiscal.action_sales_report_configuration
+msgid "Crea una nueva configuración de reporte"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__create_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__create_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard__create_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__create_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__create_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__create_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__create_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__create_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__create_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard__create_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__create_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__create_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__create_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__create_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__fiscal_document_type__internal_type__credit_note
+msgid "Credit Notes"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.actions.act_window,help:l10n_hn_fiscal.fiscal_document_type_action
+msgid "Cree un nuevo tipo de documento fiscal"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__code
+msgid "Código"
+msgstr "Código"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__l10n_hn_establecimiento_code
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__l10n_hn_establecimiento_code
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__l10n_hn_establecimiento_code
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__l10n_hn_establecimiento_code
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__establecimiento_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__code
+msgid "Código de Establecimiento"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__code
+msgid "Código de Punto de Emisión"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__journal_code
+msgid "Código del Diario"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.invoice_customer_form_view
+msgid "Datos Fiscales Honduras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__fiscal_document_type__internal_type__debit_note
+msgid "Debit Notes"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__declaration
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__declaration
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__declaration
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__declaration
+msgid "Declaracion"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__declaration
+msgid "Declaración"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Descargar Excel"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__description
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.fiscal_document_type_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Descripción"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__active
+msgid "Desmarque esta casilla para desactivar el CAI sin eliminarlo."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__journal_id
+msgid "Diario"
+msgstr "Diario"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__journal_id
+msgid "Diario contable de tipo venta al que se aplicará esta configuración de CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__journals_display
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__journal_ids
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__journals_display
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_configuration_form
+msgid "Diarios"
+msgstr "Diarios"
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Diarios Configurados"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__address_id
+msgid "Dirección Fiscal"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__display_name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__display_name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__display_name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__display_name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__display_name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__display_name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_account_invoice_filter
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_account_move_filter
+msgid "Document Type"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__active_sar
+msgid "Documento Fiscal"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_account_journal__fiscal_document_type_id
+msgid "Documento Fiscal a utilizar en este diario"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_establecimiento_tree
+msgid "Domicilio Fiscal"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__digitos_correlativo
+msgid "Dígitos del Correlativo"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_form
+msgid "E.g. XXXX-XXXX-XXXX-XXXX-XXXX-XXXX-XX"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "El CAI es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid "El código de establecimiento es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid "El código de punto de emisión es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.constraint,message:l10n_hn_fiscal.constraint_fiscal_document_type_code_country_uniq
+msgid "El código del documento debe ser único por país."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.constraint,message:l10n_hn_fiscal.constraint_l10n_hn_establecimiento_code_company_uniq
+msgid "El código del establecimiento debe ser único por compañía."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.constraint,message:l10n_hn_fiscal.constraint_l10n_hn_punto_emision_code_establecimiento_uniq
+msgid "El código del punto de emisión debe ser único por establecimiento."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/document_type.py:0
+#, python-format
+msgid "El código es requerido para documentos de Honduras."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "El diario es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid "El establecimiento es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "El hash introducido no es correcto. No se puede restablecer el CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid "El nombre comercial es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.constraint,message:l10n_hn_fiscal.constraint_fiscal_document_type_name_country_uniq
+msgid "El nombre del documento debe ser único por país."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid "El nombre del punto de emisión es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/document_type.py:0
+#, python-format
+msgid "El nombre es requerido para documentos de Honduras."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.constraint,message:l10n_hn_fiscal.constraint_l10n_hn_cai_name_uniq
+msgid "El número de CAI debe ser único."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/account_move.py:0
+#, python-format
+msgid "El número de factura (%s) está fuera del rango fiscal autorizado por el CAI (%s - %s)."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "El número final es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "El número inicial del rango no puede ser mayor que el número final."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "El número inicial es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/document_type.py:0
+#, python-format
+msgid "El país es requerido para documentos de Honduras."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/ir_sequence.py:0
+#, python-format
+msgid ""
+"El próximo número de la secuencia (%s) excede el rango final del CAI (%s) para la secuencia "
+"\"%s\". No se pueden generar más documentos."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "El punto de emisión es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "El tipo de documento fiscal es requerido."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_mail_template
+msgid "Email Templates"
+msgstr "Plantillas de correo electrónico"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__establecimiento_id
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_establecimiento_form
+msgid "Establecimiento"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.act_window,name:l10n_hn_fiscal.action_l10n_hn_establecimiento
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_l10n_hn_establecimiento
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_establecimiento_tree
+msgid "Establecimientos"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_l10n_hn_establecimiento
+msgid "Establecimientos Fiscales de Honduras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__state
+msgid "Estado"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:account.tax.group,name:l10n_hn_fiscal.tax_group_exe
+#: model:account.tax.group,name:l10n_hn_fiscal.tax_group_exo
+msgid "Exonerado"
+msgstr "exonerado"
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "FOLIO NO."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Factura"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"Factura\n"
+"                                                borrador"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.report,name:l10n_hn_fiscal.report_invoice_print_uhy
+msgid "Factura Hondureña"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Fecha"
+msgstr "Fecha"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__date_from
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__date_from
+msgid "Fecha Desde"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__date_to
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__date_to
+msgid "Fecha Hasta"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__emition
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__emition
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__emition
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__emition
+msgid "Fecha de recepcion"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__emition
+msgid "Fecha de recepción"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__emition_limit
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__emition_limit
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__emition_limit
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__emition_limit
+msgid "Fecha limite de emision"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Fecha limite de emision:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__emition_limit
+msgid "Fecha límite de emisión"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Fecha:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_journal__fiscal_document_type_id
+msgid "Fiscal Document for Sales"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_follower_ids
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_partner_ids
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_type_icon
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Generar Excel"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Generar PDF"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.act_window,name:l10n_hn_fiscal.action_purchase_report_wizard
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+msgid "Generar Reporte de Compras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.act_window,name:l10n_hn_fiscal.action_sales_report_wizard
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Generar Reporte de Ventas"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__has_message
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__confirmation_hash
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard__provided_hash
+msgid "Hash de Confirmación"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__confirmation_hash
+msgid "Hash de seguridad generado al confirmar. Necesario para restablecer a borrador."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard__id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: l10n_hn_fiscal
+#: model:account.tax.group,name:l10n_hn_fiscal.tax_group_isv_15
+msgid "ISV15%"
+msgstr "ISV15"
+
+#. module: l10n_hn_fiscal
+#: model:account.tax.group,name:l10n_hn_fiscal.tax_group_isv_18
+msgid "ISV18%"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_exception_icon
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_exception_icon
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_needaction
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_has_error
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_has_sms_error
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_has_error
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Importe Exento"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Importe Exonerado"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Importe Gravado"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Importe del ISV"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__taxes_display
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__report_taxes
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__taxes_display
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_configuration_form
+msgid "Impuestos"
+msgstr "Impuestos"
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Impuestos Configurados"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_ir_sequence__has_confirmed_cai
+msgid ""
+"Indica si esta secuencia está asociada a un CAI confirmado. Campo auxiliar para "
+"restricciones de vista."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_account_bank_statement_line__has_cai
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_account_move__has_cai
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_account_payment__has_cai
+msgid "Indica si la factura tiene un CAI asignado. Campo auxiliar para restricciones de vista."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_account_journal__l10n_hn_sequence_is_fiscal
+msgid "Indica si la secuencia de este diario está fiscalizada por un CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_account_journal_form_inherit_l10n_hn_fiscal
+msgid "Información Fiscal Honduras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_form
+msgid "Información de la Secuencia (Solo Lectura)"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_form
+msgid "Información del Diario (Solo Lectura)"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__internal_type
+msgid "Internal Type"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__sales_report_configuration__report_name__purchase_report
+msgid "Invoice Purchase Report"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__sales_report_configuration__report_name__sales_report
+msgid "Invoice Sales Report"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__fiscal_document_type__internal_type__invoice
+msgid "Invoices"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_is_follower
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_account_move
+msgid "Journal Entry"
+msgstr "Asientos contables"
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid "La compañía es requerida."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid "La dirección fiscal es requerida."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/account_move.py:0
+#, python-format
+msgid "La fecha de la factura (%s) es posterior a la fecha límite para emisión del CAI (%s)."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "La fecha de recepción es requerida."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "La fecha límite de emisión es requerida."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/ir_sequence.py:0
+#, python-format
+msgid ""
+"La secuencia '%s' no puede modificarse porque está asociada al CAI confirmado '%s'.\n"
+"\n"
+"Para modificar esta secuencia, primero debe restablecer el CAI asociado a borrador."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "La secuencia es requerida."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid ""
+"La secuencia seleccionada ('%s') ya está siendo utilizada por otro CAI activo ('%s'). Por "
+"favor, seleccione una secuencia diferente o cree una nueva."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type____last_update
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai____last_update
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard____last_update
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento____last_update
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision____last_update
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard____last_update
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration____last_update
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__write_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__write_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard__write_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__write_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__write_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__write_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__write_uid
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__write_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__write_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai_reset_wizard__write_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__write_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__write_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__write_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__write_date
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.report,name:l10n_hn_fiscal.action_report_purchase_book
+msgid "Libro de Compras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.report,name:l10n_hn_fiscal.action_report_sales_book
+msgid "Libro de Ventas"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Logo"
+msgstr "Logo"
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "Los dígitos del correlativo son requeridos."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "Los rangos de numeración deben ser mayores a cero."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_main_attachment_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_has_error
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_ids
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__amount_in_words
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__amount_in_words
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__amount_in_words
+msgid "Monto en letras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Monto en letras :"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:res.groups,name:l10n_hn_fiscal.group_show_l10n_hn_fiscal
+msgid "Mostrar Detalles Fiscales (L10n HN)"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__my_activity_date_deadline
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__report_name
+msgid "Name on Reports"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_fiscal_document_type__report_name
+msgid "Name that will be printed in reports, for example \"CREDIT NOTE\""
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_calendar_event_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_date_deadline
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_summary
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_type_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "No hay impuestos configurados"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid ""
+"No puede eliminar el establecimiento \"%s\" porque ya esta siendo utilizado en las "
+"siguientes configuraciones de CAI: %s"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_fiscal_locations.py:0
+#, python-format
+msgid ""
+"No puede eliminar el punto de emisión \"%s\" porque ya esta siendo utilizado en las "
+"siguientes configuraciones de CAI: %s"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/account_move.py:0
+#, python-format
+msgid ""
+"No se pudo extraer el número de la factura \"%s\". El formato no es un número válido para la "
+"validación del CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/account_move.py:0
+#, python-format
+msgid ""
+"No se pudo extraer la parte numérica del número de factura \"%s\" para la validación del CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid ""
+"No se puede eliminar un CAI que ya ha sido confirmado, incluso si está en estado de borrador."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/ir_sequence.py:0
+#, python-format
+msgid "No se puede eliminar una secuencia que está asociada a un CAI activo."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/account_move.py:0
+#, python-format
+msgid ""
+"No se puede usar un tipo de documento \"%s\" con una factura. Por favor, seleccione un tipo "
+"de documento de factura o nota de débito."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/account_move.py:0
+#, python-format
+msgid ""
+"No se puede usar un tipo de documento \"%s\" con una nota de crédito/reembolso. Por favor, "
+"seleccione un tipo de documento de nota de crédito."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid ""
+"No se pueden modificar los campos de un CAI confirmado. Primero debe restablecerlo a "
+"borrador."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "No tienes permisos para confirmar un CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#, python-format
+msgid "No tienes permisos para restablecer un CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__folio_inicial
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__folio_inicial
+msgid "No. de Folio Inicial"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__name
+msgid "Nombre"
+msgstr "Nombre"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__name
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_establecimiento_form
+msgid "Nombre Comercial"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__name
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__name
+msgid "Nombre archivo"
+msgstr "Nombre archivo"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__name
+msgid "Nombre del Punto de Emisión"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.fiscal_document_type_view_form
+msgid "Nombre del Tipo de Documento"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Nombre/Razón Social del Comprador"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+msgid "Nombre/Razón Social del Proveedor"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Nota de Crédito"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Nota de Débito"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_needaction_counter
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_has_error_counter
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_needaction_counter
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_has_error_counter
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__range_end
+msgid "Numero Final"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__range_start
+msgid "Numero Inicial"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Número"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Número Correlativo"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__range_end
+msgid "Número Final"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__range_start
+msgid "Número Inicial"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__number_oce_hn
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__number_oce_hn
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__number_oce_hn
+msgid "Número OCE HN"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_res_partner__number_sag_hn
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_res_users__number_sag_hn
+msgid "Número SAG HN"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__number_sag_hn
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__number_sag_hn
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__number_sag_hn
+msgid "Número de Registro SAG"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__remaining_numbers
+msgid "Números Restantes"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid ""
+"Page:\n"
+"                                            <span class=\"page\"/>\n"
+"                                            /\n"
+"                                            <span class=\"topage\"/>"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_reset_wizard_form
+msgid ""
+"Para restablecer el CAI a borrador y poder editarlo, por favor,\n"
+"                        introduce el hash de confirmación que se generó al confirmarlo.\n"
+"                        Esta es una medida de seguridad para prevenir cambios no autorizados."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__company_partner_id
+msgid "Partner de la Compañía"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__country_id
+msgid "País"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__number_next
+msgid "Próximo Número a Emitir"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__number_next
+msgid "Próximo número de factura que se emitirá basado en el último número usado con este CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:res.groups,name:l10n_hn_fiscal.group_confirm_cai
+msgid "Puede confirmar CAI (L10n HN)"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__l10n_hn_punto_emision_code
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__l10n_hn_punto_emision_code
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__l10n_hn_punto_emision_code
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__l10n_hn_punto_emision_code
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__punto_emision_id
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_punto_emision_form
+msgid "Punto de Emisión"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.act_window,name:l10n_hn_fiscal.action_l10n_hn_punto_emision
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__punto_emision_ids
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_l10n_hn_punto_emision
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_establecimiento_form
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_punto_emision_tree
+msgid "Puntos de Emisión"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_l10n_hn_punto_emision
+msgid "Puntos de Emisión Fiscal de Honduras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+msgid "REGISTRO DE LIBRO DE COMPRAS"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "REGISTRO DE LIBRO DE VENTAS"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_fiscal_reports_hn
+msgid "REPORTES FISCALES DE HONDURAS"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:l10n_latam.identification.type,name:l10n_hn_fiscal.it_rtn
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "RTN"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Rango Autorizado desde:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_ir_actions_report
+msgid "Report Action"
+msgstr "Acción de informe"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_report_general_wizard
+msgid "Reporte General"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_report_general_wizard_purchase
+msgid "Reporte General Compras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_configuration_search
+msgid "Reporte de Compras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_res_company__out_invoice_report_to_print
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_res_config_settings__out_invoice_report_to_print
+msgid "Reporte de Factura de Venta"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_report_l10n_hn_fiscal_report_purchase_book
+msgid "Reporte de Libro de Compras Honduras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_report_l10n_hn_fiscal_report_sales_book
+msgid "Reporte de Libro de Ventas Honduras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_purchase_report
+msgid "Reporte de Registro de Compras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_sales_report
+msgid "Reporte de Registro de Ventas"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_configuration_search
+msgid "Reporte de Ventas"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_user_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_reset_wizard_form
+msgid "Restablecer CAI a Borrador"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#. odoo-python
+#: code:addons/l10n_hn_fiscal/models/l10n_hn_cai.py:0
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_form
+#, python-format
+msgid "Restablecer a Borrador"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__message_has_sms_error
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__sequence_id
+msgid "Secuencia"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_journal__l10n_hn_sequence_is_fiscal
+msgid "Secuencia Fiscalizada"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__sequence_id
+msgid "Secuencia que será actualizada con los datos de este CAI al confirmar."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_l10n_hn_cai_form
+msgid "Seguridad"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.res_config_settings_view_form_inherit
+msgid ""
+"Seleccione el reporte que se utilizará para imprimir las facturas de venta \n"
+"                                    (solo facturas asociadas a diarios de tipo venta). Si no "
+"se selecciona, \n"
+"                                    se utilizará el reporte nativo de Odoo."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_res_company__out_invoice_report_to_print
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_res_config_settings__out_invoice_report_to_print
+msgid ""
+"Seleccione el reporte que se utilizará para imprimir las facturas de venta (solo facturas "
+"asociadas a diarios de tipo venta). Si no se selecciona, se utilizará el reporte nativo de "
+"Odoo."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__journal_type
+msgid ""
+"Select 'Sale' for customer invoices journals.\n"
+"Select 'Purchase' for vendor bills journals.\n"
+"Select 'Cash' or 'Bank' for journals that are used in customer or vendor payments.\n"
+"Select 'General' for miscellaneous operations journals."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_ir_sequence
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_fiscal_document_type__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__journal_code
+msgid ""
+"Shorter name used for display. The journal entries of this journal will also be named using "
+"this prefix by default."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_state
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "T/C:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__has_cai
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__has_cai
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__has_cai
+msgid "Tiene CAI"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__has_confirmed_cai
+msgid "Tiene CAI Confirmado"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__has_journals
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__has_journals
+msgid "Tiene Diarios"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_purchase_report_wizard__has_taxes
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_wizard__has_taxes
+msgid "Tiene Impuestos"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Tipo"
+msgstr "Tipo"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__journal_type
+msgid "Tipo de Diario"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_fiscal_document_type
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_ir_sequence__fiscal_document_type_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__fiscal_document_type_id
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.fiscal_document_type_view_form
+msgid "Tipo de Documento Fiscal"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_sales_report_configuration__report_name
+msgid "Tipo de Reporte"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_bank_statement_line__fiscal_document_type_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_move__fiscal_document_type_id
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_account_payment__fiscal_document_type_id
+msgid "Tipo de documento"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__fiscal_document_type_id
+msgid "Tipo de documento de LATAM que corresponde a este CAI."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.actions.act_window,name:l10n_hn_fiscal.fiscal_document_type_action
+#: model:ir.ui.menu,name:l10n_hn_fiscal.menu_fiscal_document_type
+msgid "Tipos de Documento"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.fiscal_document_type_view_tree
+msgid "Tipos de Documento Fiscal"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Titular:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_purchase_report_wizard_form
+msgid "Todos los diarios de compra"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.view_sales_report_wizard_form
+msgid "Todos los diarios de venta"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "Total"
+msgstr "Total"
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "Total:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__activity_exception_decoration
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.constraint,message:l10n_hn_fiscal.constraint_l10n_hn_cai_sequence_id_active_uniq
+msgid "Una secuencia solo puede estar asociada a un CAI activo a la vez."
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__sales_report_configuration__allowed_journal_type__sale
+#: model:ir.model.fields.selection,name:l10n_hn_fiscal.selection__sales_report_configuration__allowed_tax_use__sale
+msgid "Ventas"
+msgstr "Ventas"
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_establecimiento__website_message_ids
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_punto_emision__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_establecimiento__website_message_ids
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_punto_emision__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_purchase_report_wizard
+msgid "Wizard para Generar Reporte de Compras"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_sales_report_wizard
+msgid "Wizard para Generar Reporte de Ventas"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_purchase_book
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.report_sales_book
+msgid "al"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "hasta:"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model_terms:ir.ui.view,arch_db:l10n_hn_fiscal.reporte_invoice_print
+msgid "referencia de orden #"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_report_l10n_hn_fiscal_reporte_general_print
+msgid "reporte General"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model,name:l10n_hn_fiscal.model_report_l10n_hn_fiscal_reporte_general_print_purchase
+msgid "reporte General Print"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,field_description:l10n_hn_fiscal.field_l10n_hn_cai__sequence_last_number
+msgid "Último Número Real Usado"
+msgstr ""
+
+#. module: l10n_hn_fiscal
+#: model:ir.model.fields,help:l10n_hn_fiscal.field_l10n_hn_cai__sequence_last_number
+msgid "Último número de factura real encontrado en el sistema para el diario asociado."
+msgstr ""

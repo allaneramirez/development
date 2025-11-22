@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Grupo de menú para Reportes Fiscales de Honduras -->
+        <menuitem
+            id="menu_fiscal_reports_hn"
+            name="REPORTES FISCALES DE HONDURAS"
+            parent="account.menu_finance_reports"
+            sequence="100"
+            groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+
+        <!-- Menú para Reporte de Registro de Ventas -->
+        <menuitem
+            id="menu_sales_report"
+            name="Reporte de Registro de Ventas"
+            parent="menu_fiscal_reports_hn"
+            action="l10n_hn_fiscal.action_sales_report_wizard"
+            sequence="10"
+            groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+
+        <!-- Menú para Reporte de Registro de Compras -->
+        <menuitem
+            id="menu_purchase_report"
+            name="Reporte de Registro de Compras"
+            parent="menu_fiscal_reports_hn"
+            action="l10n_hn_fiscal.action_purchase_report_wizard"
+            sequence="20"
+            groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+    </data>
+</odoo>
+

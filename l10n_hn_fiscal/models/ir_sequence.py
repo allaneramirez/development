@@ -16,12 +16,36 @@ class IrSequence(models.Model):
     declaration = fields.Char('Declaracion', size=8)
     range_start = fields.Integer('Numero Inicial')
     range_end = fields.Integer('Numero Final')
-    range_start_str = fields.Char('Correlativo Inicial', compute='_get_range_start')
-    range_end_str = fields.Char('Correlativo Final', compute='_get_range_end')
+    range_start_str = fields.Char('Correlativo Inicial', compute='_get_range_start', store=False)
+    range_end_str = fields.Char('Correlativo Final', compute='_get_range_end', store=False)
     fiscal_document_type_id = fields.Many2one('fiscal_document_type', string='Tipo de Documento Fiscal',
                                                   domain="[('country_id.code', '=', 'HN')]")
     l10n_hn_establecimiento_code = fields.Char(string='Código de Establecimiento')
     l10n_hn_punto_emision_code = fields.Char(string='Punto de Emisión')
+    
+    has_confirmed_cai = fields.Boolean(
+        string='Tiene CAI Confirmado',
+        compute='_compute_has_confirmed_cai',
+        store=False,
+        help="Indica si esta secuencia está asociada a un CAI confirmado. Campo auxiliar para restricciones de vista."
+    )
+    
+    def _compute_has_confirmed_cai(self):
+        """
+        Calcula si la secuencia tiene un CAI confirmado asociado.
+        No usa @api.depends porque no puede depender de 'id'.
+        Se calcula cada vez que se accede al campo.
+        """
+        for seq in self:
+            if seq.id:
+                cai_confirmado = self.env['l10n_hn.cai'].search([
+                    ('sequence_id', '=', seq.id),
+                    ('state', '=', 'confirmed')
+                ], limit=1)
+                seq.has_confirmed_cai = bool(cai_confirmado)
+            else:
+                # Si no tiene id, es un registro nuevo, no puede tener CAI confirmado
+                seq.has_confirmed_cai = False
 
     def write(self, vals):
         if self.env.context.get('allow_cai_write'):
@@ -66,17 +90,21 @@ class IrSequence(models.Model):
         return super(IrSequence, self).unlink()
 
 
+    @api.depends('range_start', 'prefix')
     def _get_range_start(self):
-        if self.range_start:
-            self.range_start_str = str(self.prefix) + str(self.range_start).zfill(8)
-        else:
-            self.range_start_str = False
+        for rec in self:
+            if rec.range_start:
+                rec.range_start_str = str(rec.prefix or '') + str(rec.range_start).zfill(8)
+            else:
+                rec.range_start_str = False
 
+    @api.depends('range_end', 'prefix')
     def _get_range_end(self):
-        if self.range_end:
-            self.range_end_str = str(self.prefix) + str(self.range_end).zfill(8)
-        else:
-            self.range_end_str = False
+        for rec in self:
+            if rec.range_end:
+                rec.range_end_str = str(rec.prefix or '') + str(rec.range_end).zfill(8)
+            else:
+                rec.range_end_str = False
 
     def _next(self, sequence_date=None):
         """
@@ -86,30 +114,14 @@ class IrSequence(models.Model):
         Esta validación se ejecuta ANTES de llamar a super(), actuando como
         una barrera de pre-validación.
         """
-        # Solo aplicar la validación para secuencias fiscales activas de HN
         if self.active_sar and self.cai:
-
-            # --- INICIO: Lógica de validación ---
-
-            # 1. Determinar la fecha efectiva, igual que el _next nativo.
-            #    Esto es crucial para que _get_current_sequence funcione correctamente.
             dt = sequence_date or self._context.get('ir_sequence_date', fields.Date.today())
 
-            # 2. Usar el método nativo para obtener el objeto (self o date_range)
-            #    que Odoo *va* a usar para la secuencia.
-            #    _get_current_sequence se encarga de buscar o *crear* el date_range
-            #    si 'use_date_range' es True.
             try:
                 current_sequence_obj = self._get_current_sequence(sequence_date=dt)
             except UserError as e:
-                # Si _get_current_sequence falla (ej. no puede crear rango),
-                # lo propagamos.
                 _logger.error("Error al obtener la secuencia actual para %s: %s", self.name, e)
                 raise
-
-            # 3. Obtener el 'siguiente número' predicho de ESE objeto.
-            #    'number_next_actual' es un campo 'compute' que predice
-            #    el siguiente valor de la secuencia de BBDD sin consumirlo.
             next_number_to_use = current_sequence_obj.number_next_actual
 
             # 4. Validar contra el 'range_end' (que está en self, la secuencia principal)
@@ -119,10 +131,4 @@ class IrSequence(models.Model):
                     'final del CAI (%s) para la secuencia "%s". '
                     'No se pueden generar más documentos.'
                 ) % (next_number_to_use, self.range_end, self.name))
-
-            # --- FIN: Lógica de validación ---
-
-        # Si la validación pasa (o no aplica), llamar a la función nativa _next().
-        # Odoo volverá a ejecutar _get_current_sequence internamente,
-        # pero esto es seguro y garantiza que la lógica nativa no se rompa.
         return super(IrSequence, self)._next(sequence_date=sequence_date)

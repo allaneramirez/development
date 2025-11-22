@@ -1,9 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_report_general_wizard,report.general.wizard,l10n_hn_fiscal.model_report_general_wizard,base.group_user,1,1,1,1
-access_report_general_wizard_purchase,report.general.wizard.purchase,l10n_hn_fiscal.model_report_general_wizard_purchase,base.group_user,1,1,1,1
 access_l10n_hn_cai_read,l10n.hn.cai read,model_l10n_hn_cai,base.group_user,1,0,0,0
 access_l10n_hn_cai_write,l10n.hn.cai write,model_l10n_hn_cai,l10n_hn_fiscal.group_show_l10n_hn_fiscal,0,1,1,1
 access_l10n_hn_cai_reset_wizard,l10n.hn.cai.reset.wizard,model_l10n_hn_cai_reset_wizard,l10n_hn_fiscal.group_confirm_cai,1,1,1,1
 access_l10n_hn_establecimiento,l10n.hn.establecimiento,model_l10n_hn_establecimiento,l10n_hn_fiscal.group_show_l10n_hn_fiscal,1,1,1,1
 access_l10n_hn_punto_emision,l10n.hn.punto.emision,model_l10n_hn_punto_emision,l10n_hn_fiscal.group_show_l10n_hn_fiscal,1,1,1,1
 access_fiscal_document_type,fiscal.document.type,model_fiscal_document_type,l10n_hn_fiscal.group_show_l10n_hn_fiscal,1,1,1,1
+access_sales_report_configuration,sales.report.configuration,model_sales_report_configuration,l10n_hn_fiscal.group_show_l10n_hn_fiscal,1,1,1,1
+access_sales_report_wizard,sales.report.wizard,model_sales_report_wizard,l10n_hn_fiscal.group_show_l10n_hn_fiscal,1,1,1,1
+access_purchase_report_wizard,purchase.report.wizard,model_purchase_report_wizard,l10n_hn_fiscal.group_show_l10n_hn_fiscal,1,1,1,1

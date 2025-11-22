@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_purchase_book" model="ir.actions.report">
+            <field name="name">Libro de Compras</field>
+            <field name="model">purchase_report_wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_hn_fiscal.report_purchase_book</field>
+            <field name="report_file">l10n_hn_fiscal.report_purchase_book</field>
+            <field name="paperformat_id" ref="l10n_hn_fiscal.paperformat_letter_landscape_hn"/>
+        </record>
+
+        <template id="report_purchase_book">
+            <t t-call="web.html_container">
+                <t t-set="data_report_page_offset" t-value="data.get('folio_inicial', 1) + 1"/>
+                <t t-set="data_report_margin_top" t-value="20"/>
+                <t t-set="data_report_header_spacing" t-value="10"/>
+                <div class="header" style="font-family: 'Rationale', sans-serif; color: #191919;">
+                    FOLIO NO. <span class="page" style="font-family: 'Rationale', sans-serif; color: #191919;" t-esc="data.get('folio_inicial', 1)"></span>
+                </div>
+                <t t-call="web.basic_layout">
+                    <div class="page" style="font-family: Arial, sans-serif;">
+                        <!-- Encabezado - 25% más pequeño -->
+                        <div style="text-align: center; line-height: 0.9; font-size: 85%;">
+                            <h5 style="font-weight: bold; margin-bottom: 2px; line-height: 0.9; font-size: 0.85em;">
+                                <span t-esc="current_company_id.name"/>
+                                <t t-if="company_rtn">
+                                    <br/>RTN: <span t-esc="company_rtn"/>
+                                </t>
+                            </h5>
+                            <h6 style="font-weight: bold; margin-bottom: 2px; line-height: 0.9; font-size: 0.85em;">REGISTRO DE LIBRO DE COMPRAS</h6>
+                            <p style="margin-bottom: 2px; line-height: 0.9; font-size: 0.85em;">
+                                <strong>Período:</strong> 
+                                Del <span t-esc="data.get('date_from')" t-options='{"widget": "date"}'/> 
+                                al <span t-esc="data.get('date_to')" t-options='{"widget": "date"}'/>
+                            </p>
+                            <p style="margin-bottom: 2px; line-height: 0.9; font-size: 0.85em;">
+                                <strong>Expresado en Lempiras</strong>
+                            </p>
+                        </div>
+
+                        <!-- Tabla -->
+                        <table class="table table-bordered" style="width: 100%; border-collapse: collapse; font-size: 10px;">
+                            <thead>
+                                <tr t-att-style="'background-color: ' + header_bg_color + '; border: 1px solid black;'">
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Número</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Tipo</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Fecha</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">RTN</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Nombre/Razón Social del Proveedor</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Descripción</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">CAI</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Número de Documento</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Importe Exento</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Importe Exonerado</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Importe Gravado</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Importe del ISV</th>
+                                    <th style="border: 1px solid black; padding: 3px; text-align: center; font-weight: bold; line-height: 1.2;">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="line_number" t-value="0"/>
+                                <tr t-foreach="result['lineas']" t-as="l">
+                                    <t t-set="line_number" t-value="line_number + 1"/>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: center; line-height: 1.2;">
+                                        <span t-esc="line_number"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: center; line-height: 1.2;">
+                                        <span t-esc="l['tipo_documento']"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: center; line-height: 1.2;">
+                                        <span t-esc="l['fecha']" t-options='{"widget": "date"}'/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: center; line-height: 1.2;">
+                                        <span t-esc="l['rtn']"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; line-height: 1.2;">
+                                        <span t-esc="l['proveedor']"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; line-height: 1.2;">
+                                        <span t-esc="l['descripcion']"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: center; line-height: 1.2;">
+                                        <span t-esc="l['cai']"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: center; line-height: 1.2;">
+                                        <span t-esc="l['numero_correlativo']"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="l['importe_exento']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="l['importe_exonerado']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="l['importe_gravado']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="l['importe_isv']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="l['total']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                </tr>
+                                <!-- Fila de totales -->
+                                <tr t-att-style="'background-color: ' + totals_bg_color + '; border: 1px solid black; font-weight: bold;'">
+                                    <td colspan="8" style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <strong>TOTALES:</strong>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="result['totales']['total_exento']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="result['totales']['total_exonerado']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="result['totales']['total_gravado']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="result['totales']['total_isv']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                    <td style="border: 1px solid black; padding: 3px; text-align: right; line-height: 1.2;">
+                                        <span t-esc="result['totales']['total_general']" t-options="{'widget': 'monetary', 'display_currency': current_company_id.currency_id}"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+

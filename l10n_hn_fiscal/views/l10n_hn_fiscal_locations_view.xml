@@ -118,20 +118,23 @@
         id="menu_l10n_hn_fiscal_config_root"
         name="CONFIGURACIÓN FISCAL HONDURAS"
         parent="account.account_account_menu"
-        sequence="99"/>
+        sequence="99"
+        groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
 
     <menuitem
         id="menu_l10n_hn_establecimiento"
         name="Establecimientos"
         parent="menu_l10n_hn_fiscal_config_root"
         action="action_l10n_hn_establecimiento"
-        sequence="10"/>
+        sequence="10"
+        groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
 
     <menuitem
         id="menu_l10n_hn_punto_emision"
         name="Puntos de Emisión"
         parent="menu_l10n_hn_fiscal_config_root"
         action="action_l10n_hn_punto_emision"
-        sequence="20"/>
+        sequence="20"
+        groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
 
 </odoo>
