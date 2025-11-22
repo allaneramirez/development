@@ -2,6 +2,7 @@
 from odoo import api, models
 from odoo.exceptions import UserError
 import logging
+import re
 
 _logger = logging.getLogger(__name__)
 
@@ -58,6 +59,14 @@ class ReportPurchaseBook(models.AbstractModel):
             # Color por defecto si hay error al convertir
             return f'rgba(211, 211, 211, {alpha})'
 
+    def _split_ref_parts(self, ref):
+        if not ref:
+            return '', '', '', ''
+        parts = [p for p in re.split(r'\D+', ref) if p]
+        while len(parts) < 4:
+            parts.append('')
+        return parts[0], parts[1], parts[2], parts[-1]
+
     def process_invoices(self, datos):
         """
         Procesa las facturas de compra y calcula los totales según los impuestos configurados
@@ -97,6 +106,8 @@ class ReportPurchaseBook(models.AbstractModel):
             invoices = filtered_invoices
         
         lineas = []
+        detalle_isv = []
+        invoice_names_in_report = set()
         for invoice in invoices:
             totales['num_facturas'] += 1
             
@@ -121,7 +132,11 @@ class ReportPurchaseBook(models.AbstractModel):
             invoice_exento = 0
             invoice_exonerado = 0
             invoice_gravado = 0
+            invoice_gravado_isv15 = 0
+            invoice_gravado_isv18 = 0
             invoice_isv = 0
+            invoice_isv15 = 0
+            invoice_isv18 = 0
             
             # Procesar cada línea de la factura
             for line in invoice.invoice_line_ids:
@@ -162,7 +177,14 @@ class ReportPurchaseBook(models.AbstractModel):
                     for tax_data in r['taxes']:
                         tax = self.env['account.tax'].browse(tax_data['id'])
                         if tax.name in ['ISV15', 'ISV18']:
-                            line_isv += tax_data['amount'] * signo
+                            amount = tax_data['amount'] * signo
+                            line_isv += amount
+                            if tax.name == 'ISV15':
+                                invoice_gravado_isv15 += r['total_excluded'] * signo
+                                invoice_isv15 += amount
+                            else:
+                                invoice_gravado_isv18 += r['total_excluded'] * signo
+                                invoice_isv18 += amount
                 else:
                     # Si no tiene impuestos, es exento
                     line_exento = r['total_excluded'] * signo
@@ -178,7 +200,11 @@ class ReportPurchaseBook(models.AbstractModel):
                 invoice_exento = 0.0
                 invoice_exonerado = 0.0
                 invoice_gravado = 0.0
+                invoice_gravado_isv15 = 0.0
+                invoice_gravado_isv18 = 0.0
                 invoice_isv = 0.0
+                invoice_isv15 = 0.0
+                invoice_isv18 = 0.0
                 invoice_total = 0.0
             else:
                 # Calcular total de la factura
@@ -189,10 +215,34 @@ class ReportPurchaseBook(models.AbstractModel):
             if len(description) > 100:
                 description = description[:100] + '...'
             
+            establishment, emission_point, doc_type_chunk, correlativo_chunk = self._split_ref_parts(invoice.ref)
+            tax_move_lines = invoice.line_ids.filtered(lambda l: l.tax_line_id and l.tax_line_id.name in ['ISV15', 'ISV18'])
+            isv_account_move = sum(abs(line.balance) for line in tax_move_lines)
+            isv_diff = isv_account_move - abs(invoice_isv15 + invoice_isv18)
+
+            debit_lines = []
+            credit_lines = []
+            for line in invoice.line_ids:
+                account_code = line.account_id.code or ''
+                account_name = line.account_id.name or ''
+                if line.debit:
+                    debit_lines.append(f"[{account_code}] {account_name} = {line.debit:.2f}")
+                if line.credit:
+                    credit_lines.append(f"[{account_code}] {account_name} = {line.credit:.2f}")
+
+            for move_line in tax_move_lines:
+                detalle_isv.append({
+                    'fecha': move_line.date or invoice.date or invoice.invoice_date,
+                    'asiento': move_line.move_id.name or '',
+                    'monto': abs(move_line.balance),
+                    'tax': move_line.tax_line_id.name or '',
+                })
+
             linea = {
                 'tipo_documento': tipo_documento,
                 'numero': invoice.name or '',
                 'fecha': invoice.invoice_date,
+                'emition_limit': invoice.emition_limit,
                 'rtn': invoice.partner_id.vat or '',
                 'proveedor': invoice.partner_id.name or '',
                 'descripcion': description,
@@ -201,11 +251,26 @@ class ReportPurchaseBook(models.AbstractModel):
                 'importe_exento': invoice_exento,
                 'importe_exonerado': invoice_exonerado,
                 'importe_gravado': invoice_gravado,
+                'importe_gravado_isv15': invoice_gravado_isv15,
+                'importe_gravado_isv18': invoice_gravado_isv18,
                 'importe_isv': invoice_isv,
+                'importe_isv15': invoice_isv15,
+                'importe_isv18': invoice_isv18,
+                'establecimiento': establishment,
+                'punto_emision': emission_point,
+                'tipo_doc_ref': doc_type_chunk,
+                'correlativo_ref': correlativo_chunk,
+                'isv_account_move': isv_account_move,
+                'isv_diff': isv_diff,
+                'asiento_contable': invoice.name or '',
+                'detalle_debe': '\n'.join(debit_lines),
+                'detalle_haber': '\n'.join(credit_lines),
                 'total': invoice_total,
             }
             
             lineas.append(linea)
+            if invoice.name:
+                invoice_names_in_report.add(invoice.name)
             
             # Acumular totales generales
             totales['total_exento'] += invoice_exento
@@ -217,7 +282,12 @@ class ReportPurchaseBook(models.AbstractModel):
         # Ordenar las líneas por tipo de documento y luego por fecha
         lineas = sorted(lineas, key=lambda x: (x['tipo_documento'], x['fecha']))
 
-        return {'lineas': lineas, 'totales': totales}
+        detalle_isv = [
+            d for d in detalle_isv if not d.get('name') or d.get('name') not in invoice_names_in_report
+        ]
+        detalle_isv = sorted(detalle_isv, key=lambda d: (d.get('fecha') or '', d.get('asiento')))
+
+        return {'lineas': lineas, 'totales': totales, 'detalle_isv': detalle_isv}
 
     @api.model
     def _get_report_values(self, docids, data=None):

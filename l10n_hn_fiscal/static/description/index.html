@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <title>Facturación SAR - Honduras</title>
+    <style>
+        body { font-family: "Segoe UI", Arial, sans-serif; color: #2c3e50; margin: 0; padding: 24px; line-height: 1.5; }
+        h1, h2 { color: #006271; }
+        .card { border: 1px solid #e1e4e8; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+        ul { margin-top: 0; }
+        .columns { display: flex; gap: 24px; flex-wrap: wrap; }
+        .columns > div { flex: 1 1 320px; }
+        .tag { display: inline-block; padding: 4px 10px; margin: 4px 6px 0 0; border-radius: 12px; background: #f0f6ff; color: #0052cc; font-size: 12px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        th, td { border: 1px solid #e1e4e8; padding: 8px 10px; text-align: left; }
+        th { background: #f9fafb; }
+    </style>
+</head>
+<body>
+    <h1>Facturación SAR - Libros para Honduras</h1>
+    <div class="card">
+        <p>Extensión contable para Odoo 16 que automatiza los requisitos del Servicio de Administración de Rentas (SAR) de Honduras.</p>
+        <div>
+            <span class="tag">Libros PDF y Excel</span>
+            <span class="tag">PT Compras/Ventas</span>
+            <span class="tag">CAI y documentos fiscales</span>
+            <span class="tag">Campos SAG y OCE</span>
+        </div>
+    </div>
+
+    <div class="columns">
+        <div class="card">
+            <h2>Configuración</h2>
+            <ul>
+                <li>Define CAI, secuencias y tipos de documento.</li>
+                <li>Configura libros de ventas y compras con diarios/impuestos filtrados.</li>
+                <li>Establece números SAG en el partner para que se propaguen a la factura.</li>
+                <li>Acceso controlado por el grupo <strong>Reportes Fiscales HN</strong>.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2>Reportes disponibles</h2>
+            <ul>
+                <li>Libro de Ventas / Compras (PDF y Excel).</li>
+                <li>PT Libro Compras con conciliación contra asientos contables.</li>
+                <li>PT Libro Ventas con detalle de productos y condición de pago.</li>
+                <li>Columnas dinámicas derivadas del número de documento (ref).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Campos añadidos</h2>
+        <table>
+            <thead>
+                <tr><th>Modelo</th><th>Campo</th><th>Uso</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>res.partner</td><td>number_sag_hn</td><td>Número de registro SAG, se copia a las facturas.</td></tr>
+                <tr><td>account.move</td><td>number_sag_hn / number_oce_hn</td><td>Requisitos del SAR (SAG y Órdenes de compra exentas).</td></tr>
+                <tr><td>account.move</td><td>Campos auxiliares (ISV por tasa, establecimiento, etc.)</td><td>Alimentan los libros PDF y PT.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Flujo de trabajo</h2>
+        <ol>
+            <li>Completar datos de CAI y tipos de documento en Configuración.</li>
+            <li>Registrar los números SAG/OCE en clientes y proveedores.</li>
+            <li>Crear configuraciones de libro (ventas y compras).</li>
+            <li>Ejecutar los wizards desde <em>Reportes Fiscales de Honduras</em> y elegir PDF, Excel o PT Excel.</li>
+        </ol>
+    </div>
+</body>
+</html>
+

@@ -54,6 +54,11 @@
                                 type="object" 
                                 class="btn-primary"
                                 style="background-color: #28a745; color: white; border-color: #28a745; margin-right: 5px;"/>
+                        <button string="Generar PT Excel" 
+                                name="action_generate_pt_excel" 
+                                type="object" 
+                                class="btn-primary"
+                                style="background-color: #17a2b8; color: white; border-color: #17a2b8; margin-right: 5px;"/>
                         <button string="Cancelar" class="btn-secondary" special="cancel"/>
                     </footer>
                 </form>

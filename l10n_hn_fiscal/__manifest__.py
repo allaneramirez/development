@@ -1,10 +1,20 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Facturacion SAR',
-    'version': '16.0.5.0',
+    'name': 'Localización Fiscal Hondureña',
+    'version': '16.0.9.0',
     'category': 'Account',
+    'summary': 'Libros fiscales, CAI y reportes PT para el SAR de Honduras',
     'author': 'Allan Ramirez / INTEGRALL',
     'website': 'https://www.integrall.solutions',
+    'description': """
+Características
+---------------
+- Configuración y control de CAI, secuencias y tipos de documentos fiscales.
+- Campos adicionales para SAG, OCE, condición de pago y datos fiscales locales.
+- Libros de ventas y compras (PDF/XLSX) con filtros por diarios e impuestos.
+- Reportes PT para compras y ventas con cruce contra asientos contables.
+- Menús y wizards específicos para usuarios del grupo “Reportes Fiscales de Honduras”.
+""",
     'depends': [
         'base',
         'account',
@@ -46,5 +56,7 @@
         'report/report_purchase_book.xml',
     ],
     "license": "AGPL-3",
+    'price': 1000,
+    'currency': 'EUR',
     'installable': True,
 }

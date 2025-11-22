@@ -312,3 +312,150 @@ class SalesReportWizard(models.TransientModel):
             'target': 'new',
         }
 
+    def action_generate_pt_excel(self):
+        """Genera el PT Libro de Ventas en formato Excel"""
+        self.ensure_one()
+
+        journal_ids = self.config_id.journal_ids.ids if self.config_id and self.config_id.journal_ids else []
+        tax_ids = self.config_id.report_taxes.ids if self.config_id and self.config_id.report_taxes else []
+
+        datos = {
+            'date_from': self.date_from,
+            'date_to': self.date_to,
+            'journal_ids': journal_ids,
+            'tax_ids': tax_ids,
+        }
+
+        report_model = self.env['report.l10n_hn_fiscal.report_sales_book']
+        result = report_model.process_invoices(datos)
+        lineas = result.get('lineas', [])
+
+        f = io.BytesIO()
+        libro = xlsxwriter.Workbook(f)
+        hoja = libro.add_worksheet('PT Libro Ventas')
+
+        formato_fecha = libro.add_format({'num_format': 'dd/mm/yyyy', 'font_name': 'Arial'})
+        formato_numero = libro.add_format({'num_format': '#,##0.00', 'font_name': 'Arial'})
+        formato_datos_texto = libro.add_format({'font_name': 'Arial'})
+        formato_texto_wrap = libro.add_format({'font_name': 'Arial', 'text_wrap': True})
+        formato_encabezado_reporte = libro.add_format({
+            'bold': True,
+            'align': 'center',
+            'valign': 'vcenter',
+            'font_name': 'Arial',
+            'font_size': 11
+        })
+        formato_encabezado = libro.add_format({
+            'bold': True,
+            'align': 'center',
+            'valign': 'vcenter',
+            'bg_color': '#d3d3d3',
+            'border': 1,
+            'font_name': 'Arial'
+        })
+        formato_totales = libro.add_format({
+            'bold': True,
+            'num_format': '#,##0.00',
+            'bg_color': '#e8e8e8',
+            'border': 1,
+            'align': 'right',
+            'valign': 'vcenter',
+            'font_name': 'Arial'
+        })
+
+        company = self.env.company
+        company_rtn = report_model.format_rtn(company.vat) if company.vat else ''
+        fecha_desde_str = format_date(self.env, self.date_from, date_format='dd MMMM yyyy')
+        fecha_hasta_str = format_date(self.env, self.date_to, date_format='dd MMMM yyyy')
+
+        num_columnas = 29
+        hoja.merge_range(0, 0, 0, num_columnas - 1, company.name or '', formato_encabezado_reporte)
+        hoja.merge_range(1, 0, 1, num_columnas - 1, f'RTN: {company_rtn}', formato_encabezado_reporte)
+        hoja.merge_range(2, 0, 2, num_columnas - 1, 'PT REPORTE DE VENTAS', formato_encabezado_reporte)
+        hoja.merge_range(3, 0, 3, num_columnas - 1, f'Período: Del {fecha_desde_str} al {fecha_hasta_str}', formato_encabezado_reporte)
+        hoja.merge_range(4, 0, 4, num_columnas - 1, 'Expresado en Lempiras', formato_encabezado_reporte)
+
+        base_columnas = [
+            'Número', 'Tipo', 'Fecha', 'RTN', 'Nombre/Razón Social del Comprador',
+            'Descripción', 'CAI', 'Número de Documento',
+            'Establecimiento', 'Punto de Emisión', 'Tipo de Documento', 'Correlativo',
+            'Total', 'Producto', 'Importe Exento', 'Importe Exonerado',
+            'Importe Gravado ISV15%', 'Importe Gravado ISV18%',
+            'Importe ISV15%', 'Importe ISV18%', 'ISV Asiento Contable', 'Diferencia'
+        ]
+        columnas_asiento = ['No. Asiento Contable', 'Debe', 'Haber']
+
+        y = 6
+        for col_idx, col_name in enumerate(base_columnas):
+            hoja.merge_range(y, col_idx, y + 1, col_idx, col_name, formato_encabezado)
+
+        start_asiento = len(base_columnas)
+        hoja.merge_range(y, start_asiento, y, start_asiento + len(columnas_asiento) - 1, 'ASIENTO CONTABLE', formato_encabezado)
+        for idx, col_name in enumerate(columnas_asiento):
+            hoja.write(y + 1, start_asiento + idx, col_name, formato_encabezado)
+        obs_start = start_asiento + len(columnas_asiento)
+        hoja.merge_range(y, obs_start, y + 1, obs_start, 'Observaciones 1', formato_encabezado)
+        hoja.merge_range(y, obs_start + 1, y + 1, obs_start + 1, 'Observaciones 2', formato_encabezado)
+        hoja.merge_range(y, obs_start + 2, y + 1, obs_start + 2, 'Observaciones 3', formato_encabezado)
+        hoja.merge_range(y, obs_start + 3, y + 1, obs_start + 3, 'Condición de Pago', formato_encabezado)
+
+        y += 2
+        for linea in lineas:
+            hoja.write(y, 0, y - 6, formato_datos_texto)
+            hoja.write(y, 1, linea.get('tipo_documento', ''), formato_datos_texto)
+            hoja.write(y, 2, linea.get('fecha'), formato_fecha)
+            hoja.write(y, 3, linea.get('rtn', ''), formato_datos_texto)
+            hoja.write(y, 4, linea.get('cliente', ''), formato_datos_texto)
+            hoja.write(y, 5, linea.get('descripcion', ''), formato_datos_texto)
+            hoja.write(y, 6, linea.get('cai', ''), formato_datos_texto)
+            hoja.write(y, 7, linea.get('numero_correlativo', ''), formato_datos_texto)
+            hoja.write(y, 8, linea.get('establecimiento', ''), formato_datos_texto)
+            hoja.write(y, 9, linea.get('punto_emision', ''), formato_datos_texto)
+            hoja.write(y, 10, linea.get('tipo_doc_ref', ''), formato_datos_texto)
+            hoja.write(y, 11, linea.get('correlativo_ref', ''), formato_datos_texto)
+            hoja.write(y, 12, linea.get('total', 0.0), formato_numero)
+            hoja.write(y, 13, linea.get('producto_detalle', ''), formato_texto_wrap)
+            hoja.write(y, 14, linea.get('importe_exento', 0.0), formato_numero)
+            hoja.write(y, 15, linea.get('importe_exonerado', 0.0), formato_numero)
+            hoja.write(y, 16, linea.get('importe_gravado_isv15', 0.0), formato_numero)
+            hoja.write(y, 17, linea.get('importe_gravado_isv18', 0.0), formato_numero)
+            hoja.write(y, 18, linea.get('importe_isv15', 0.0), formato_numero)
+            hoja.write(y, 19, linea.get('importe_isv18', 0.0), formato_numero)
+            hoja.write(y, 20, linea.get('isv_account_move', 0.0), formato_numero)
+            hoja.write(y, 21, linea.get('isv_diff', 0.0), formato_numero)
+            hoja.write(y, 22, linea.get('asiento_contable', ''), formato_datos_texto)
+            hoja.write(y, 23, linea.get('detalle_debe', ''), formato_texto_wrap)
+            hoja.write(y, 24, linea.get('detalle_haber', ''), formato_texto_wrap)
+            hoja.write(y, 25, '', formato_datos_texto)
+            hoja.write(y, 26, '', formato_datos_texto)
+            hoja.write(y, 27, '', formato_datos_texto)
+            hoja.write(y, 28, linea.get('condicion_pago', ''), formato_datos_texto)
+            y += 1
+
+        hoja.set_column(0, 0, 10)
+        hoja.set_column(1, 1, 15)
+        hoja.set_column(2, 3, 12)
+        hoja.set_column(4, 5, 35)
+        hoja.set_column(6, 11, 20)
+        hoja.set_column(12, 12, 18)
+        hoja.set_column(13, 13, 30)
+        hoja.set_column(14, 20, 18)
+        hoja.set_column(21, 21, 18)
+        hoja.set_column(22, 23, 35)
+        hoja.set_column(24, 27, 25)
+
+        libro.close()
+        datos_binarios = base64.b64encode(f.getvalue())
+        self.write({
+            'archivo': datos_binarios,
+            'name': 'pt_reporte_ventas.xlsx'
+        })
+
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'sales_report_wizard',
+            'view_mode': 'form',
+            'res_id': self.id,
+            'target': 'new',
+        }
+
