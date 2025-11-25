@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models
 import logging
+from ..utils import compat
 
 _logger = logging.getLogger(__name__)
 
@@ -8,7 +9,7 @@ _logger = logging.getLogger(__name__)
 class IrActionsReport(models.Model):
     _inherit = 'ir.actions.report'
 
-    def report_action(self, docids, data=None, config=True):
+    def report_action(self, docids, data=None, config=True, **kwargs):
         """
         Sobrescribe el método para usar el reporte personalizado cuando se imprime
         una factura de venta, incluso si se selecciona un reporte nativo del menú.
@@ -20,7 +21,7 @@ class IrActionsReport(models.Model):
         if self.model != 'account.move' or not docids:
             _logger.info("Not account.move or no docids, skipping")
             # noinspection PyUnresolvedReferences
-            return super().report_action(docids, data=data, config=config)
+            return super().report_action(docids, data=data, config=config, **kwargs)
         
         # Normalizar docids: puede ser un recordset, una lista de IDs, o un solo ID
         if hasattr(docids, '_name') and docids._name == 'account.move':
@@ -37,7 +38,7 @@ class IrActionsReport(models.Model):
         custom_report = None
         for move in moves:
             if (move.move_type == 'out_invoice' and 
-                move.journal_id.type == 'sale' and 
+                compat.is_sale_journal(move.journal_id) and 
                 move.company_id.out_invoice_report_to_print):
                 # Si este NO es el reporte personalizado mismo, usar el personalizado
                 if self.id != move.company_id.out_invoice_report_to_print.id:
@@ -85,14 +86,14 @@ class IrActionsReport(models.Model):
             # Si es nativo, usar el reporte personalizado
             if is_native:
                 _logger.info("Intercepting native report, using custom report")
-                return custom_report.report_action(move_ids, data=data, config=config)
+                return custom_report.report_action(move_ids, data=data, config=config, **kwargs)
             else:
                 _logger.info("Not intercepting (not native)")
         
         # Si no cumple las condiciones, usar el comportamiento por defecto
         _logger.info("Using default behavior")
         # noinspection PyUnresolvedReferences
-        return super().report_action(docids, data=data, config=config)
+        return super().report_action(docids, data=data, config=config, **kwargs)
     
     def _is_invoice_report(self, report_ref):
         """
@@ -131,7 +132,7 @@ class IrActionsReport(models.Model):
             return self.report_name in ('account.report_invoice_with_payments', 'account.report_invoice')
         return False
     
-    def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
+    def _render_qweb_pdf(self, report_ref=None, res_ids=None, data=None, **kwargs):
         """
         Sobrescribe el método que realmente genera el PDF para interceptar
         reportes nativos de facturas y reemplazarlos con el reporte personalizado.
@@ -164,7 +165,7 @@ class IrActionsReport(models.Model):
             custom_report = None
             for move in moves:
                 if (move.move_type == 'out_invoice' and 
-                    move.journal_id.type == 'sale' and 
+                    compat.is_sale_journal(move.journal_id) and 
                     move.company_id.out_invoice_report_to_print):
                     # Si este NO es el reporte personalizado mismo, usar el personalizado
                     if self.id != move.company_id.out_invoice_report_to_print.id:
@@ -182,15 +183,15 @@ class IrActionsReport(models.Model):
                 if custom_xmlid_data:
                     custom_report_ref = '%s.%s' % (custom_xmlid_data.module, custom_xmlid_data.name)
                     _logger.info("Using custom report with XML ID: %s", custom_report_ref)
-                    return custom_report._render_qweb_pdf(custom_report_ref, res_ids=move_ids, data=data)
+                    return custom_report._render_qweb_pdf(custom_report_ref, res_ids=move_ids, data=data, **kwargs)
                 else:
                     # Si no tiene XML ID, usar el report_name
                     _logger.info("Using custom report with report_name: %s", custom_report.report_name)
-                    return custom_report._render_qweb_pdf(custom_report.report_name, res_ids=move_ids, data=data)
+                    return custom_report._render_qweb_pdf(custom_report.report_name, res_ids=move_ids, data=data, **kwargs)
         
         # Si no cumple las condiciones, usar el comportamiento por defecto
         # (incluye la lógica del módulo account para reportes de facturas)
         _logger.info("Using default behavior in _render_qweb_pdf")
         # noinspection PyUnresolvedReferences
-        return super()._render_qweb_pdf(report_ref, res_ids=res_ids, data=data)
+        return super()._render_qweb_pdf(report_ref, res_ids=res_ids, data=data, **kwargs)
 

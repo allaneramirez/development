@@ -1,0 +1,619 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* is_odoo_invoice_import
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-28 06:14+0000\n"
+"PO-Revision-Date: 2025-10-28 00:23-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "1729973585"
+msgstr "1729973585"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "41275748"
+msgstr "41275748"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "51010101"
+msgstr "51010101"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "<i class=\"fa fa-download\"/> Download Example Template"
+msgstr "<i class=\"fa fa-download\"/> Descargar plantilla de ejemplo"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Account Code"
+msgstr "Código de Cuenta"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__account_option
+msgid "Account Option"
+msgstr "Opción de cuenta"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Account Source Option"
+msgstr "Opción de fuente de cuenta"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Accounting Date"
+msgstr "Fecha contable"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Analytic:Percent"
+msgstr "Analítica:Porcentaje"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields.selection,name:is_odoo_invoice_import.selection__import_invoice_wizard__import_product_by__barcode
+msgid "Barcode"
+msgstr "Código de Barra"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "COM"
+msgstr "COM"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields.selection,name:is_odoo_invoice_import.selection__import_invoice_wizard__import_product_by__code
+msgid "Code"
+msgstr "Código"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Comment"
+msgstr "Comentario"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "DD9822ED"
+msgstr "DD9822ED"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "DD9822ED-671D-4D51-9181-6FAC9F406659"
+msgstr "DD9822ED-671D-4D51-9181-6FAC9F406659"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Description"
+msgstr "Descripción"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Disc %"
+msgstr "Disco"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Due Date"
+msgstr "Fecha límite"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Excel File"
+msgstr "Archivo Excel"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Expense type"
+msgstr "Tipo de gasto"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "FAC-001"
+msgstr "FAC-001"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "FEL Number"
+msgstr "Número FEL"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "FEL Serie"
+msgstr "Serie FEL"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "FEL Signature"
+msgstr "Firma FEL"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "File name"
+msgstr "Nombre de archivo"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "GTQ"
+msgstr "GTQ"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "IVA 12%"
+msgstr "IVA 12"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields.selection,name:is_odoo_invoice_import.selection__import_invoice_wizard__invoice_stage_option__draft
+msgid "Import Draft Invoice"
+msgstr "Importar borrador de factura"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__files
+msgid "Import Excel File"
+msgstr "Importar archivo Excel"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model,name:is_odoo_invoice_import.model_import_invoice_wizard
+msgid "Import Invoice Wizard"
+msgstr "Asistente para importar facturas"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Import Invoices"
+msgstr "Importar facturas"
+
+#. module: is_odoo_invoice_import
+#: model:ir.ui.menu,name:is_odoo_invoice_import.menu_import_invoice_wizard
+msgid "Import Invoices from Excel"
+msgstr "Importar facturas desde Excel"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__import_product_by
+msgid "Import Product By"
+msgstr "Importar producto por"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invalid account code \"%s\""
+msgstr "Código de cuenta \"%s\" no válido"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invalid currency at row %s"
+msgstr "Moneda no válida en la fila %s"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invalid date '%s' for %s at row %s (expected dd-mm-YYYY)"
+msgstr "Fecha '%s' no válida para %s en la fila %s (se espera dd-mm-AAAA)"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invalid invoice_type at row %s. Expected one of: %s"
+msgstr "Tipo_factura inválido en la fila %s. Se esperaba uno de: %s"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invalid journal code: %s"
+msgstr "Código de diario no válido: %s"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invalid product identification method."
+msgstr "Método de identificación del producto no válido."
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invalid tipo_gasto at row %s"
+msgstr "Tipo_gasto no válido en la fila %s"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invoice Date"
+msgstr "Fecha de recibo"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invoice Import Template"
+msgstr "Plantilla de importación de facturas"
+
+#. module: is_odoo_invoice_import
+#: model:ir.actions.act_window,name:is_odoo_invoice_import.action_invoice_import_wizard
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Invoice Import Wizard"
+msgstr "Asistente para la importación de facturas"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__invoice_stage_option
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Invoice Stage Option"
+msgstr "Opción de etapa de facturación"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Invoice Type"
+msgstr "Tipo"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Journal Code"
+msgstr "Código del diario"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model,name:is_odoo_invoice_import.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Laptop Dell i7"
+msgstr "Portátil Dell i7"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última modificación en"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.view_move_form_inherited
+msgid "Link PDF"
+msgstr "Enlace PDF"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Missing columns in Excel: %s"
+msgstr "Faltan columnas en Excel: %s"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Missing invoice ID at row %s"
+msgstr "Falta el ID de la factura en la fila %s"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields.selection,name:is_odoo_invoice_import.selection__import_invoice_wizard__import_product_by__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "No valid account for product \"%s\""
+msgstr "No hay cuenta válida para el producto \"%s\""
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "P0001"
+msgstr "P0001"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Pago Contado"
+msgstr "Pago Contado"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Partner VAT or Name"
+msgstr "Socio IVA o Nombre"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Partner is empty"
+msgstr "El socio está vacío"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Partner not found: %s"
+msgstr "Socio no encontrado: %s"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Payment Ref"
+msgstr "Referencia de pago"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Please select a valid .xls or .xlsx file."
+msgstr "Seleccione un archivo .xls o .xlsx válido."
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Primera importación"
+msgstr "Primera importación"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Product Code"
+msgstr "Código del producto"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Product Identification Method"
+msgstr "Método de identificación del producto"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Product code or name is missing."
+msgstr "Falta el código o el nombre del producto."
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Product not found for %s: %s"
+msgstr "Producto no encontrado para %s: %s"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Qty"
+msgstr "Cantidad"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_import_invoice_wizard__datas_fname
+msgid "Select Excel File"
+msgstr "Seleccionar archivo Excel"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Select Excel File to Import"
+msgstr "Seleccione el archivo Excel a importar"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid "Select your Excel file (.xls / .xlsx)"
+msgstr "Seleccione su archivo Excel (.xls / .xlsx)"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Tax names comma separated"
+msgstr "Nombres de impuestos separados por comas"
+
+#. module: is_odoo_invoice_import
+#: model_terms:ir.ui.view,arch_db:is_odoo_invoice_import.invoice_import_wizard_form_view
+msgid ""
+"This wizard allows you to import invoices from Excel (.xls / .xlsx). Make "
+"sure to use the correct template and verify your data before importing. The "
+"supported documents are: out_invoice (customer invoice), out_refund "
+"(customer credit note), out_receipt (customer receipt), in_invoice (vendor "
+"bill), in_refund (vendor credit note), and in_receipt (vendor receipt)."
+msgstr ""
+"Este asistente le permite importar facturas desde Excel (.xls / .xlsx). "
+"Asegúrese de utilizar la plantilla correcta y verifique sus datos antes de "
+"importar. Los documentos admitidos son: out_invoice (factura de cliente), "
+"out_refund (nota de crédito de cliente), out_receipt (recibo de cliente), "
+"in_invoice (factura de proveedor), in_refund (nota de crédito de proveedor) "
+"e in_receipt (recibo de proveedor)."
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_account_bank_statement_line__url
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_account_move__url
+#: model:ir.model.fields,field_description:is_odoo_invoice_import.field_account_payment__url
+msgid "URL"
+msgstr "URL"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Unique invoice ID"
+msgstr "ID único de la factura"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields.selection,name:is_odoo_invoice_import.selection__import_invoice_wizard__account_option__product_incexp_account
+msgid "Use Account from Configuration Product/Property"
+msgstr "Utilizar cuenta de producto/propiedad de configuración"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields.selection,name:is_odoo_invoice_import.selection__import_invoice_wizard__account_option__from_excel_account
+msgid "Use Account from Excel"
+msgstr "Utilizar la cuenta desde Excel"
+
+#. module: is_odoo_invoice_import
+#: model:ir.model.fields.selection,name:is_odoo_invoice_import.selection__import_invoice_wizard__invoice_stage_option__validate
+msgid "Validate Invoice Automatically with Import"
+msgstr "Validar la factura automáticamente con la importación"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "Ventas:100"
+msgstr "Ventas:100"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "barcode"
+msgstr "código de barras"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "compra"
+msgstr "compra"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "in_invoice"
+msgstr "en_factura"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "internal code"
+msgstr "código interno"
+
+#. module: is_odoo_invoice_import
+#. odoo-python
+#: code:addons/is_odoo_invoice_import/wizard/invoice_import.py:0
+#, python-format
+msgid "name"
+msgstr "nombre"

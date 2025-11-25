@@ -3,6 +3,7 @@ from odoo import http
 from odoo.http import request
 from odoo.addons.portal.controllers.portal import CustomerPortal
 from odoo.exceptions import AccessError, MissingError
+from ..utils import compat
 
 
 class CustomerPortal(CustomerPortal):
@@ -20,7 +21,7 @@ class CustomerPortal(CustomerPortal):
 
         # Verificar si es una factura de venta y si hay un reporte personalizado configurado
         if (invoice_sudo.move_type == 'out_invoice' and 
-            invoice_sudo.journal_id.type == 'sale' and 
+            compat.is_sale_journal(invoice_sudo.journal_id) and 
             invoice_sudo.company_id.out_invoice_report_to_print):
             # Si se solicita el PDF o HTML, usar el reporte personalizado
             if report_type in ('pdf', 'html'):

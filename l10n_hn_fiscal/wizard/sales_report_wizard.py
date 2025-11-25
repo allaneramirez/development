@@ -6,6 +6,7 @@ from odoo.tools.misc import format_date
 import io
 import base64
 import xlsxwriter
+from ..utils import compat
 
 
 class SalesReportWizard(models.TransientModel):
@@ -137,21 +138,7 @@ class SalesReportWizard(models.TransientModel):
         
         # Obtener el color primario del modelo base.document.layout
         company = self.env.company
-        primary_color = None
-        
-        try:
-            document_layout = self.env['base.document.layout'].search([
-                ('company_id', '=', company.id)
-            ], limit=1)
-            
-            if document_layout and document_layout.primary_color:
-                primary_color = document_layout.primary_color
-        except Exception:
-            pass
-        
-        # Si no se encontró el color, usar un gris por defecto
-        if not primary_color:
-            primary_color = '#D3D3D3'
+        primary_color = compat.get_company_primary_color(self.env, company)
         
         # Convertir color hex a RGB y aplicar transparencia igual que en el PDF
         # En el PDF se usa rgba con alpha 0.25 para encabezado y 0.5 para totales

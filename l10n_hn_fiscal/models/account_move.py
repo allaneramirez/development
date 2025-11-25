@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError, UserError
+from ..utils import compat
 import re
+import os
+import base64
 
 
 class AccountMove(models.Model):
@@ -15,8 +18,9 @@ class AccountMove(models.Model):
     declaration = fields.Char('Declaracion', store=True)
     range_start_str = fields.Char('Correlativo Inicial', store=True)
     range_end_str = fields.Char('Correlativo Final', store=True)
-    number_sag_hn = fields.Char('Número de Registro SAG', oldname='num_contract_sag')
-    number_oce_hn = fields.Char('Número OCE HN', oldname='num_exempt_purchase')
+    number_sag_hn = fields.Char('Número Identificativo del Registro SAG', oldname='num_contract_sag')
+    number_oce_hn = fields.Char('Correlativo Orden de Compra Exenta', oldname='num_exempt_purchase')
+    consecutive_number_oce_hn = fields.Char('Correlativo de la Constancia del Registro de Exonerados')
     l10n_hn_establecimiento_code = fields.Char(string='Código de Establecimiento', store=True, readonly=True)
     l10n_hn_punto_emision_code = fields.Char(string='Punto de Emisión', store=True, readonly=True)
     fiscal_document_type_id = fields.Many2one(
@@ -114,30 +118,30 @@ class AccountMove(models.Model):
                 ('active', '=', True)
             ], limit=1)
 
-            if cai:
-                # A CAI was found, use its document type (highest priority)
+            if cai and cai.fiscal_document_type_id:
+                # A CAI was found with document type, use it (highest priority)
                 fiscal_document_type_id = cai.fiscal_document_type_id.id
                 has_cai_or_sequence = True
             else:
-                # Priority 2: If no CAI found, search in the sequence
-                # Check if the journal has a sequence with CAI and fiscal_document_type
+                # Priority 2: If no CAI found, check in the sequence
                 sequence = self.journal_id.sequence_id
-                if sequence and sequence.cai and sequence.fiscal_document_type_id:
-                    # Sequence has CAI and document type, use it
+                if sequence and sequence.active_sar and sequence.fiscal_document_type_id:
+                    # Sequence has fiscal_document_type_id, use it
                     fiscal_document_type_id = sequence.fiscal_document_type_id.id
                     has_cai_or_sequence = True
 
             if has_cai_or_sequence and fiscal_document_type_id:
-                # Set the document type and restrict the domain only if there's CAI or sequence with CAI
+                # Set the document type and restrict the domain only if there's CAI or sequence with document type
                 self.fiscal_document_type_id = fiscal_document_type_id
                 domain = {'fiscal_document_type_id': [('id', '=', fiscal_document_type_id)]}
                 return {'domain': domain}
             else:
-                # No CAI or sequence with CAI found, or CAI/sequence found but no document type
+                # No CAI or sequence with document type found
                 # Allow selection of any document type from the same country as the company
+                # DO NOT clear the existing value - let user keep their selection
                 company_country = self.company_id.country_id
                 if company_country:
-                    # Clear the document type if it's from a different country
+                    # Only clear if it's from a different country
                     if self.fiscal_document_type_id and self.fiscal_document_type_id.country_id.id != company_country.id:
                         self.fiscal_document_type_id = False
                     # Allow selection of any document type from the company's country
@@ -145,14 +149,13 @@ class AccountMove(models.Model):
                     return {'domain': domain}
                 else:
                     # No country set for company, allow free selection
-                    if self.fiscal_document_type_id:
-                        self.fiscal_document_type_id = False
+                    # Don't clear existing value
                     return {'domain': {'fiscal_document_type_id': []}}
         else:
             # If no journal selected, restrict to company's country if available
             company_country = self.company_id.country_id
             if company_country:
-                # Clear the document type if it's from a different country
+                # Only clear if it's from a different country
                 if self.fiscal_document_type_id and self.fiscal_document_type_id.country_id.id != company_country.id:
                     self.fiscal_document_type_id = False
                 # Allow selection of any document type from the company's country
@@ -160,8 +163,7 @@ class AccountMove(models.Model):
                 return {'domain': domain}
             else:
                 # No country set for company, allow free selection
-                if self.fiscal_document_type_id:
-                    self.fiscal_document_type_id = False
+                # Don't clear existing value
                 return {'domain': {'fiscal_document_type_id': []}}
 
     def action_post(self):
@@ -173,13 +175,26 @@ class AccountMove(models.Model):
             if not (sequence and sequence.active_sar):
                 continue
 
+            # Priority 1: Check if there's a confirmed CAI for this journal
+            # This takes precedence over the sequence's fiscal_document_type_id
+            cai = self.env['l10n_hn.cai'].search([
+                ('journal_id', '=', move.journal_id.id),
+                ('state', '=', 'confirmed'),
+                ('active', '=', True)
+            ], limit=1)
+
             # 1. Validation: Check if the invoice date is within the CAI's validity period.
-            if move.invoice_date and move.invoice_date > sequence.emition_limit:
+            # Use CAI's emition_limit if available, otherwise use sequence's
+            emition_limit = cai.emition_limit if cai else sequence.emition_limit
+            if move.invoice_date and emition_limit and move.invoice_date > emition_limit:
                 raise ValidationError(_(
                     'La fecha de la factura (%s) es posterior a la fecha límite para emisión del CAI (%s).') % (
-                                          move.invoice_date, sequence.emition_limit))
+                                          move.invoice_date, emition_limit))
 
             # 2. Validation: Check if the invoice number is within the authorized range.
+            # Use CAI's range if available, otherwise use sequence's
+            range_start = cai.range_start if cai else sequence.range_start
+            range_end = cai.range_end if cai else sequence.range_end
             if move.name and move.name != '/':
                 try:
                     match = re.search(r'(\d+)$', move.name)
@@ -188,24 +203,61 @@ class AccountMove(models.Model):
                     
                     invoice_number = int(match.group(1))
 
-                    if not (sequence.range_start <= invoice_number <= sequence.range_end):
+                    if range_start and range_end and not (range_start <= invoice_number <= range_end):
                         raise ValidationError(_(
                             'El número de factura (%s) está fuera del rango fiscal autorizado por el CAI (%s - %s).') % (
-                                                  invoice_number, sequence.range_start, sequence.range_end))
+                                                  invoice_number, range_start, range_end))
                 except (ValueError, TypeError):
                     raise UserError(_(
                         'No se pudo extraer el número de la factura "%s". El formato no es un número válido para la validación del CAI.') % move.name)
 
-            # 3. Data Population: Enforce document type and copy fiscal data from the sequence to the move.
-            move.fiscal_document_type_id = sequence.fiscal_document_type_id.id
-            move.cai = sequence.cai
-            move.emition = sequence.emition
-            move.emition_limit = sequence.emition_limit
-            move.declaration = sequence.declaration
-            move.range_end_str = sequence.range_end_str
-            move.range_start_str = sequence.range_start_str
-            move.l10n_hn_establecimiento_code = sequence.l10n_hn_establecimiento_code
-            move.l10n_hn_punto_emision_code = sequence.l10n_hn_punto_emision_code
+            # 3. Data Population: Copy fiscal data from CAI (priority) or sequence to the move.
+            # Only override fiscal_document_type_id if there's a valid value from CAI or sequence
+            if cai and cai.fiscal_document_type_id:
+                # Priority 1: Use CAI's fiscal_document_type_id if available
+                # When CAI is confirmed, it updates the sequence, so we can use sequence values
+                # for range_start_str and range_end_str
+                move.fiscal_document_type_id = cai.fiscal_document_type_id.id
+                move.cai = cai.name
+                move.emition = cai.emition
+                move.emition_limit = cai.emition_limit
+                move.declaration = cai.declaration
+                move.range_end_str = sequence.range_end_str
+                move.range_start_str = sequence.range_start_str
+                move.l10n_hn_establecimiento_code = cai.establecimiento_id.code if cai.establecimiento_id else False
+                move.l10n_hn_punto_emision_code = cai.punto_emision_id.code if cai.punto_emision_id else False
+            elif sequence.fiscal_document_type_id:
+                # Priority 2: Use sequence's fiscal_document_type_id if available and no CAI
+                move.fiscal_document_type_id = sequence.fiscal_document_type_id.id
+                move.cai = sequence.cai
+                move.emition = sequence.emition
+                move.emition_limit = sequence.emition_limit
+                move.declaration = sequence.declaration
+                move.range_end_str = sequence.range_end_str
+                move.range_start_str = sequence.range_start_str
+                move.l10n_hn_establecimiento_code = sequence.l10n_hn_establecimiento_code
+                move.l10n_hn_punto_emision_code = sequence.l10n_hn_punto_emision_code
+            else:
+                # Priority 3: No CAI and sequence has no fiscal_document_type_id
+                # Keep the user-selected fiscal_document_type_id (don't override)
+                # Only copy other fiscal data if available in sequence
+                if sequence.cai:
+                    move.cai = sequence.cai
+                if sequence.emition:
+                    move.emition = sequence.emition
+                if sequence.emition_limit:
+                    move.emition_limit = sequence.emition_limit
+                if sequence.declaration:
+                    move.declaration = sequence.declaration
+                if sequence.range_end_str:
+                    move.range_end_str = sequence.range_end_str
+                if sequence.range_start_str:
+                    move.range_start_str = sequence.range_start_str
+                if sequence.l10n_hn_establecimiento_code:
+                    move.l10n_hn_establecimiento_code = sequence.l10n_hn_establecimiento_code
+                if sequence.l10n_hn_punto_emision_code:
+                    move.l10n_hn_punto_emision_code = sequence.l10n_hn_punto_emision_code
+                # fiscal_document_type_id is NOT overridden - keep user's selection
 
         return super(AccountMove, self).action_post()
 
@@ -243,7 +295,7 @@ class AccountMove(models.Model):
         self.ensure_one()
         # Verificar si es una factura de venta y si hay un reporte personalizado configurado
         if (self.move_type == 'out_invoice' and 
-            self.journal_id.type == 'sale' and 
+            compat.is_sale_journal(self.journal_id) and 
             self.company_id.out_invoice_report_to_print):
             # Usar el reporte personalizado configurado
             return self.company_id.out_invoice_report_to_print.report_action(self)
@@ -269,3 +321,104 @@ class AccountMove(models.Model):
                 'url': '/my/invoices/%s' % self.id,
                 'target': 'self',
             }
+    
+    def _get_static_image(self, filename):
+        """Método helper para cargar imágenes estáticas como base64."""
+        try:
+            # Obtener la ruta del módulo desde el archivo actual
+            current_file = os.path.abspath(__file__)
+            # Ir desde models/account_move.py -> l10n_hn_fiscal/ -> static/description/
+            module_dir = os.path.dirname(os.path.dirname(current_file))
+            image_path = os.path.join(module_dir, 'static', 'src', 'img', filename)
+            
+            if os.path.exists(image_path):
+                with open(image_path, 'rb') as f:
+                    image_data = f.read()
+                    return base64.b64encode(image_data).decode('utf-8')
+            
+            # Fallback: intentar con addons_path
+            import odoo
+            addons_paths = odoo.tools.config.get('addons_path', '').split(',')
+            for addons_path in addons_paths:
+                addons_path = addons_path.strip()
+                image_path = os.path.join(addons_path, 'l10n_hn_fiscal', 'static', 'src', 'img', filename)
+                if os.path.exists(image_path):
+                    with open(image_path, 'rb') as f:
+                        image_data = f.read()
+                        return base64.b64encode(image_data).decode('utf-8')
+        except Exception as e:
+            import logging
+            _logger = logging.getLogger(__name__)
+            _logger.warning("Error loading image %s: %s", filename, str(e))
+        return None
+    
+    def get_dps_background_image(self):
+        """Carga la imagen de fondo de la factura DPS como base64."""
+        return self._get_static_image('factura_dps_backgroup.png')
+    
+    def get_dps_logo_image(self):
+        """Carga el logo DPS blanco como base64."""
+        return self._get_static_image('logo_dps_blanco.png')
+    
+    def _get_static_font(self, filename):
+        """Helper para cargar una fuente estática como base64."""
+        try:
+            current_file = os.path.abspath(__file__)
+            module_path = os.path.dirname(os.path.dirname(os.path.dirname(current_file)))
+            font_path = os.path.join(module_path, 'l10n_hn_fiscal', 'static', 'fonts', filename)
+            if os.path.exists(font_path):
+                with open(font_path, 'rb') as f:
+                    font_data = f.read()
+                    return base64.b64encode(font_data).decode('utf-8')
+        except Exception as e:
+            import logging
+            _logger = logging.getLogger(__name__)
+            _logger.warning("Error loading font %s: %s", filename, str(e))
+        return None
+    
+    def get_poppins_regular_font(self):
+        """Carga la fuente Poppins Regular como base64."""
+        return self._get_static_font('poppins-regular.ttf')
+    
+    def get_poppins_bold_font(self):
+        """Carga la fuente Poppins Bold como base64."""
+        return self._get_static_font('poppins-bold.ttf')
+    
+    def get_document_name_dps(self):
+        """Obtiene el nombre del documento para el reporte DPS, deduciéndolo si es necesario."""
+        # Caso especial: Nota de Débito cuando move_type es out_invoice y fiscal_document_type_id es debit_note
+        if self.move_type == 'out_invoice' and self.fiscal_document_type_id and self.fiscal_document_type_id.internal_type == 'debit_note':
+            return 'NOTA DE DÉBITO'
+        
+        # Si existe fiscal_document_type_id y no es el caso anterior, usar su nombre
+        if self.fiscal_document_type_id:
+            return (self.fiscal_document_type_id.name or '').upper()
+        
+        # Si no existe fiscal_document_type_id, deducir según move_type y state
+        if self.move_type == 'out_invoice' and self.state == 'posted':
+            return 'FACTURA'
+        if self.move_type == 'out_invoice' and self.state == 'draft':
+            return 'FACTURA BORRADOR'
+        if self.move_type == 'out_refund':
+            return 'NOTA DE CRÉDITO'
+        
+        # Fallback
+        return 'FACTURA'
+    
+    def get_formatted_date_dps(self):
+        """Obtiene la fecha formateada en español para el reporte DPS: 'día de mes de año'."""
+        if not self.invoice_date:
+            return ''
+        
+        month_names = {
+            '01': 'enero', '02': 'febrero', '03': 'marzo', '04': 'abril',
+            '05': 'mayo', '06': 'junio', '07': 'julio', '08': 'agosto',
+            '09': 'septiembre', '10': 'octubre', '11': 'noviembre', '12': 'diciembre'
+        }
+        
+        day = self.invoice_date.strftime('%d')
+        month = self.invoice_date.strftime('%m')
+        year = self.invoice_date.strftime('%Y')
+        month_name = month_names.get(month, month)
+        
+        return f"{day} de {month_name} de {year}"

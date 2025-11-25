@@ -2,76 +2,627 @@
 <html lang="es">
 <head>
     <meta charset="utf-8"/>
-    <title>Facturación SAR - Honduras</title>
+    <title>Localización Fiscal Hondureña - Módulo Completo para Odoo</title>
     <style>
-        body { font-family: "Segoe UI", Arial, sans-serif; color: #2c3e50; margin: 0; padding: 24px; line-height: 1.5; }
-        h1, h2 { color: #006271; }
-        .card { border: 1px solid #e1e4e8; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
-        ul { margin-top: 0; }
-        .columns { display: flex; gap: 24px; flex-wrap: wrap; }
-        .columns > div { flex: 1 1 320px; }
-        .tag { display: inline-block; padding: 4px 10px; margin: 4px 6px 0 0; border-radius: 12px; background: #f0f6ff; color: #0052cc; font-size: 12px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-        th, td { border: 1px solid #e1e4e8; padding: 8px 10px; text-align: left; }
-        th { background: #f9fafb; }
+        body { 
+            font-family: "Segoe UI", Arial, sans-serif; 
+            color: #2c3e50; 
+            margin: 0; 
+            padding: 24px; 
+            line-height: 1.6; 
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 { 
+            color: #004257; 
+            border-bottom: 3px solid #004257;
+            padding-bottom: 12px;
+            margin-bottom: 24px;
+            font-size: 32px;
+        }
+        h2 { 
+            color: #006271; 
+            margin-top: 32px;
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+        h3 {
+            color: #004257;
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .card { 
+            border: 1px solid #e1e4e8; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-bottom: 24px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04); 
+            background: white;
+        }
+        ul { 
+            margin-top: 0; 
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .columns { 
+            display: flex; 
+            gap: 24px; 
+            flex-wrap: wrap; 
+        }
+        .columns > div { 
+            flex: 1 1 300px; 
+        }
+        .tag { 
+            display: inline-block; 
+            padding: 6px 12px; 
+            margin: 4px 6px 4px 0; 
+            border-radius: 16px; 
+            background: #e3f2fd; 
+            color: #004257; 
+            font-size: 12px; 
+            font-weight: 500;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 12px; 
+        }
+        th, td { 
+            border: 1px solid #e1e4e8; 
+            padding: 12px; 
+            text-align: left; 
+        }
+        th { 
+            background: #f9fafb; 
+            font-weight: 600;
+            color: #004257;
+        }
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 16px;
+            border-left: 4px solid #ffc107;
+            margin: 16px 0;
+            border-radius: 4px;
+        }
+        .info {
+            background: #d1ecf1;
+            padding: 16px;
+            border-left: 4px solid #0c5460;
+            margin: 16px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            padding: 16px;
+            border-left: 4px solid #28a745;
+            margin: 16px 0;
+            border-radius: 4px;
+        }
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #004257;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 8px;
+            margin: 16px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .feature-item {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 6px;
+            border-left: 3px solid #004257;
+        }
+        .feature-item strong {
+            color: #004257;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .icon {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #28a745;
+            color: white;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        .badge-warning {
+            background: #ffc107;
+            color: #000;
+        }
     </style>
 </head>
 <body>
-    <h1>Facturación SAR - Libros para Honduras</h1>
-    <div class="card">
-        <p>Extensión contable para Odoo 16 que automatiza los requisitos del Servicio de Administración de Rentas (SAR) de Honduras.</p>
-        <div>
-            <span class="tag">Libros PDF y Excel</span>
-            <span class="tag">PT Compras/Ventas</span>
-            <span class="tag">CAI y documentos fiscales</span>
-            <span class="tag">Campos SAG y OCE</span>
+    <div class="container">
+        <h1>🏛️ Localización Fiscal Hondureña</h1>
+        
+        <div class="price">
+            💰 Precio: 1,000 EUR
         </div>
-    </div>
 
-    <div class="columns">
         <div class="card">
-            <h2>Configuración</h2>
+            <p style="font-size: 18px; margin-bottom: 16px; line-height: 1.8;">
+                Módulo completo y profesional para <strong>Odoo 16 y Odoo 17</strong> que automatiza todos los requisitos fiscales del 
+                <strong>Servicio de Administración de Rentas (SAR)</strong> de Honduras. Incluye gestión de CAI, facturación DPS, 
+                libros fiscales en múltiples formatos y reportes PT con validaciones avanzadas.
+            </p>
+            <div>
+                <span class="tag">📄 Factura DPS Pre-impresa</span>
+                <span class="tag">📊 Libros PDF y Excel</span>
+                <span class="tag">📈 PT Compras/Ventas</span>
+                <span class="tag">🎫 Gestión de CAI</span>
+                <span class="tag">🏢 Establecimientos Fiscales</span>
+                <span class="tag">📋 Documentos Fiscales</span>
+                <span class="tag">🔢 Campos SAG y OCE</span>
+                <span class="tag">✅ Odoo 16 &amp; 17</span>
+                <span class="tag">🔒 Validaciones Automáticas</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Características Principales</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <strong><span class="icon">📄</span>Factura DPS</strong>
+                    Reporte de factura con diseño pre-impreso, imagen de fondo embebida, fuentes personalizadas (Poppins) y posicionamiento absoluto preciso en centímetros.
+                </div>
+                <div class="feature-item">
+                    <strong><span class="icon">🎫</span>Gestión de CAI</strong>
+                    Sistema completo con estados (Borrador/Confirmado), validación de rangos, fechas límite, bloqueo de secuencias y cálculo automático de números restantes.
+                </div>
+                <div class="feature-item">
+                    <strong><span class="icon">📊</span>Libros Fiscales</strong>
+                    Generación de libros de ventas y compras en PDF, Excel y formato PT con validaciones, desglose automático y conciliación contable.
+                </div>
+                <div class="feature-item">
+                    <strong><span class="icon">🏢</span>Establecimientos</strong>
+                    Gestión jerárquica de establecimientos fiscales y puntos de emisión con validaciones y restricciones de integridad.
+                </div>
+                <div class="feature-item">
+                    <strong><span class="icon">📋</span>Tipos de Documentos</strong>
+                    Configuración flexible de tipos de documentos fiscales (Factura, Nota de Crédito, Nota de Débito) según normativa SAR.
+                </div>
+                <div class="feature-item">
+                    <strong><span class="icon">🔧</span>Configuración Flexible</strong>
+                    Sistema de configuración de libros con filtros por diarios e impuestos, validación automática de tipos y configuraciones separadas para ventas/compras.
+                </div>
+                <div class="feature-item">
+                    <strong><span class="icon">⚙️</span>Reporte predeterminado</strong>
+                    Campo <em>Reporte de Factura de Venta</em> en <code>Ajustes → Contabilidad → Facturas de cliente</code> para elegir la Factura DPS como informe por defecto. Solo visible para administradores.
+                </div>
+            </div>
+        </div>
+
+        <div class="columns">
+            <div class="card">
+                <h3>📄 Factura DPS - Características Técnicas</h3>
+                <ul>
+                    <li><strong>Imagen de fondo:</strong> Carga automática desde <code>static/src/img/factura_dps_backgroup.png</code> como base64</li>
+                    <li><strong>Fuentes:</strong> Poppins Regular y Bold embebidas desde archivos estáticos</li>
+                    <li><strong>Posicionamiento:</strong> Todos los elementos con <code>position: absolute</code> en centímetros</li>
+                    <li><strong>Colores:</strong> 
+                        <ul>
+                            <li>Encabezados: <code>#004257</code> (teal oscuro)</li>
+                            <li>Valores: <code>#273439</code> (gris oscuro)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Secciones:</strong>
+                        <ul>
+                            <li>Datos de compañía (superior derecha)</li>
+                            <li>Nombre y número de documento</li>
+                            <li>Información del cliente (nombre, dirección, RTN)</li>
+                            <li>Datos del Adquiriente Exonerado</li>
+                            <li>Tabla de productos con encabezado teal</li>
+                            <li>Footer con observaciones, total en letras, CAI y totales</li>
+                        </ul>
+                    </li>
+                    <li><strong>Acceso seguro:</strong> El reporte solo se muestra al grupo Administradores/Settings (<code>base.group_system</code>) para evitar impresiones por usuarios no autorizados.</li>
+                    <li><strong>Métodos Python:</strong>
+                        <ul>
+                            <li><code>get_dps_background_image()</code></li>
+                            <li><code>get_poppins_regular_font()</code> / <code>get_poppins_bold_font()</code></li>
+                            <li><code>get_document_name_dps()</code></li>
+                            <li><code>get_formatted_date_dps()</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>🎫 Gestión de CAI - Funcionalidades</h3>
+                <ul>
+                    <li><strong>Estados:</strong> Borrador y Confirmado con hash de seguridad</li>
+                    <li><strong>Validaciones:</strong>
+                        <ul>
+                            <li>Rango de números autorizado</li>
+                            <li>Fecha límite de emisión</li>
+                            <li>Unicidad por secuencia</li>
+                        </ul>
+                    </li>
+                    <li><strong>Asociación:</strong> Vinculación con diarios y secuencias</li>
+                    <li><strong>Bloqueo:</strong> Secuencias con CAI confirmado no editables</li>
+                    <li><strong>Cálculos automáticos:</strong>
+                        <ul>
+                            <li>Próximo número a emitir</li>
+                            <li>Números restantes</li>
+                            <li>Último número usado</li>
+                        </ul>
+                    </li>
+                    <li><strong>Restablecimiento:</strong> Wizard para volver a borrador con hash</li>
+                    <li><strong>Establecimientos:</strong> Asociación con códigos de establecimiento y punto de emisión</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📊 Reportes Disponibles</h2>
+            <div class="columns">
+                <div>
+                    <h3>📈 Libro de Ventas</h3>
+                    <ul>
+                        <li><strong>PDF:</strong> Libro tradicional con formato oficial, folios, RTN formateado (XXXXX-XXXXXX-X), totales por tipo de impuesto</li>
+                        <li><strong>Excel (XLSX):</strong> Versión editable del registro, lista para importar a sistemas externos</li>
+                        <li><strong>PT Excel:</strong> Formato especial con validaciones:
+                            <ul>
+                                <li>Desglose automático de número de documento (Establecimiento, Punto, Tipo, Correlativo)</li>
+                                <li>RTN formateado automáticamente</li>
+                                <li>Importes por tipo: Exonerado, Exento, Gravado 15%, Gravado 18%</li>
+                                <li>ISV 15% e ISV 18% calculados</li>
+                                <li><strong>Columna Producto:</strong> <code>[Código cuenta] Nombre de Cuenta</code> (de <code>account_id</code> de cada línea)</li>
+                                <li><strong>Columna Condición de Pago:</strong> Términos de pago de la factura</li>
+                                <li>Validación cruzada de datos</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>📉 Libro de Compras</h3>
+                    <ul>
+                        <li><strong>PDF:</strong> Libro tradicional con formato oficial, folios, totales por tipo de impuesto</li>
+                        <li><strong>Excel (XLSX):</strong> Versión editable del registro</li>
+                        <li><strong>PT Excel:</strong> Formato especial con conciliación contable:
+                            <ul>
+                                <li>Desglose automático del número de documento desde <code>ref</code></li>
+                                <li>Comparación ISV declarado vs. asiento contable</li>
+                                <li>Detalle de debe/haber</li>
+                                <li>Columnas de observaciones editables</li>
+                                <li>Columnas dinámicas según formato del número</li>
+                                <li>Validación de totales</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔧 Campos Añadidos al Sistema</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Modelo</th>
+                        <th>Campo</th>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>res.partner</code></td>
+                        <td><code>number_sag_hn</code></td>
+                        <td>Char</td>
+                        <td>Número de registro SAG. Se copia automáticamente a las facturas cuando se crea una factura para el partner.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="11"><code>account.move</code></td>
+                        <td><code>number_sag_hn</code></td>
+                        <td>Char</td>
+                        <td>Número identificativo del registro SAG (heredado del partner).</td>
+                    </tr>
+                    <tr>
+                        <td><code>number_oce_hn</code></td>
+                        <td>Char</td>
+                        <td>Correlativo de Orden de Compra Exenta.</td>
+                    </tr>
+                    <tr>
+                        <td><code>consecutive_number_oce_hn</code></td>
+                        <td>Char</td>
+                        <td>Correlativo de la Constancia del Registro de Exonerados.</td>
+                    </tr>
+                    <tr>
+                        <td><code>cai</code></td>
+                        <td>Char(37)</td>
+                        <td>Código de Autorización de Impresión (37 caracteres). Se asigna automáticamente desde la secuencia.</td>
+                    </tr>
+                    <tr>
+                        <td><code>emition</code></td>
+                        <td>Date</td>
+                        <td>Fecha de recepción del CAI.</td>
+                    </tr>
+                    <tr>
+                        <td><code>emition_limit</code></td>
+                        <td>Date</td>
+                        <td>Fecha límite de emisión del CAI. Validada al publicar facturas.</td>
+                    </tr>
+                    <tr>
+                        <td><code>range_start_str</code></td>
+                        <td>Char</td>
+                        <td>Correlativo inicial del rango autorizado (formateado con prefijo).</td>
+                    </tr>
+                    <tr>
+                        <td><code>range_end_str</code></td>
+                        <td>Char</td>
+                        <td>Correlativo final del rango autorizado (formateado con prefijo).</td>
+                    </tr>
+                    <tr>
+                        <td><code>declaration</code></td>
+                        <td>Char(8)</td>
+                        <td>Declaración fiscal (8 caracteres).</td>
+                    </tr>
+                    <tr>
+                        <td><code>fiscal_document_type_id</code></td>
+                        <td>Many2one</td>
+                        <td>Tipo de documento fiscal (Factura, Nota de Crédito, Nota de Débito).</td>
+                    </tr>
+                    <tr>
+                        <td><code>l10n_hn_establecimiento_code</code></td>
+                        <td>Char(3)</td>
+                        <td>Código de establecimiento (3 dígitos).</td>
+                    </tr>
+                    <tr>
+                        <td><code>l10n_hn_punto_emision_code</code></td>
+                        <td>Char(3)</td>
+                        <td>Punto de emisión (3 dígitos).</td>
+                    </tr>
+                    <tr>
+                        <td><code>account.move</code></td>
+                        <td><code>amount_in_words</code></td>
+                        <td>Char</td>
+                        <td>Monto total en letras (calculado automáticamente según moneda).</td>
+                    </tr>
+                    <tr>
+                        <td><code>account.move</code></td>
+                        <td><code>has_cai</code></td>
+                        <td>Boolean</td>
+                        <td>Indica si la factura tiene CAI asignado.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>🚀 Flujo de Trabajo Completo</h2>
+            <ol style="padding-left: 20px; line-height: 1.8;">
+                <li><strong>Configuración Inicial (Una vez):</strong>
+                    <ul>
+                        <li>Completar datos fiscales de la compañía (RTN, colores corporativos opcionales)</li>
+                        <li>Crear establecimientos fiscales y puntos de emisión</li>
+                        <li>Configurar tipos de documentos fiscales (Factura, Nota de Crédito, etc.)</li>
+                        <li>Configurar diarios: marcar "Documento Fiscal" en secuencias, seleccionar tipo de documento</li>
+                        <li>Crear CAI: asociar a diario y secuencia, confirmar CAI</li>
+                        <li>Configurar libros: crear configuraciones para ventas y compras, seleccionar diarios e impuestos</li>
+                    </ul>
+                </li>
+                <li><strong>Configuración de Partners (Ongoing):</strong>
+                    <ul>
+                        <li>Para cada cliente/proveedor: completar "Número SAG HN" en pestaña "Categorías"</li>
+                        <li>Este valor se copiará automáticamente a las facturas</li>
+                    </ul>
+                </li>
+                <li><strong>Emisión de Facturas (Diario):</strong>
+                    <ul>
+                        <li>Crear factura normalmente: el sistema asigna automáticamente CAI, datos del rango, códigos de establecimiento/punto, tipo de documento, número SAG</li>
+                        <li>Completar datos adicionales si aplica (OCE, Constancia de Exonerados)</li>
+                        <li>Validar y publicar: el sistema valida rango, fecha límite, CAI activo</li>
+                        <li>Imprimir Factura DPS cuando sea necesario</li>
+                    </ul>
+                </li>
+                <li><strong>Generación de Reportes (Mensual/Trimestral):</strong>
+                    <ul>
+                        <li>Libro de Ventas: <code>Contabilidad → Reportes Fiscales → Reporte de Registro de Ventas</code></li>
+                        <li>Libro de Compras: <code>Contabilidad → Reportes Fiscales → Reporte de Registro de Compras</code></li>
+                        <li>Seleccionar rango de fechas, folio inicial, formato (PDF/Excel/PT Excel)</li>
+                        <li>Validar datos antes de presentar al SAR</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="info">
+            <strong>💡 Información Técnica:</strong> El módulo incluye plantillas de factura DPS con posicionamiento absoluto 
+            en centímetros para alineación precisa con papel pre-impreso. Las fuentes Poppins (Regular y Bold) y las imágenes 
+            de fondo se cargan automáticamente desde archivos estáticos como base64 para renderizado confiable en PDF.
+        </div>
+
+        <div class="card">
+            <h2>📁 Estructura del Módulo</h2>
+            <div class="columns">
+                <div>
+                    <h3>Modelos Principales</h3>
+                    <ul>
+                        <li><code>models/account_move.py</code> - Campos adicionales, validaciones CAI, métodos DPS</li>
+                        <li><code>models/l10n_hn_cai.py</code> - Gestión completa de CAI con estados y validaciones</li>
+                        <li><code>models/document_type.py</code> - Tipos de documentos fiscales configurables</li>
+                        <li><code>models/l10n_hn_fiscal_locations.py</code> - Establecimientos y puntos de emisión</li>
+                        <li><code>models/ir_sequence.py</code> - Validaciones y extensiones de secuencias</li>
+                        <li><code>models/sales_report_configuration.py</code> - Configuración flexible de libros</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Reportes y Wizards</h3>
+                    <ul>
+                        <li><code>report/report_invoice.xml</code> - Plantilla de factura DPS y estándar</li>
+                        <li><code>report/report_sales_book.xml</code> - Plantilla libro de ventas PDF</li>
+                        <li><code>report/report_sales_book.py</code> - Lógica de procesamiento libro de ventas</li>
+                        <li><code>report/report_purchase_book.xml</code> - Plantilla libro de compras PDF</li>
+                        <li><code>report/report_purchase_book.py</code> - Lógica de procesamiento libro de compras</li>
+                        <li><code>wizard/sales_report_wizard.py</code> - Wizard para generar libros de ventas</li>
+                        <li><code>wizard/purchase_report_wizard.py</code> - Wizard para generar libros de compras</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Recursos Estáticos</h3>
+                    <ul>
+                        <li><code>static/fonts/poppins-regular.ttf</code> - Fuente Poppins Regular</li>
+                        <li><code>static/fonts/poppins-bold.ttf</code> - Fuente Poppins Bold</li>
+                        <li><code>static/src/img/factura_dps_backgroup.png</code> - Imagen de fondo DPS</li>
+                        <li><code>static/src/img/logo_dps_blanco.png</code> - Logo DPS (reserva)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔒 Seguridad y Permisos</h2>
+            <p><strong>Grupo de seguridad:</strong> <code>l10n_hn_fiscal.group_show_l10n_hn_fiscal</code></p>
+            <p>Asigna este grupo a los usuarios que necesiten acceder a:</p>
             <ul>
-                <li>Define CAI, secuencias y tipos de documento.</li>
-                <li>Configura libros de ventas y compras con diarios/impuestos filtrados.</li>
-                <li>Establece números SAG en el partner para que se propaguen a la factura.</li>
-                <li>Acceso controlado por el grupo <strong>Reportes Fiscales HN</strong>.</li>
+                <li>Menús de reportes fiscales</li>
+                <li>Configuración de CAI</li>
+                <li>Wizards de generación de libros</li>
+                <li>Configuración de establecimientos y puntos de emisión</li>
+            </ul>
+            <p><strong>Permisos de modelos:</strong> Definidos en <code>security/ir.model.access.csv</code></p>
+        </div>
+
+        <div class="card">
+            <h2>✅ Compatibilidad y Requisitos</h2>
+            <div class="columns">
+                <div>
+                    <h3>Versiones de Odoo</h3>
+                    <ul>
+                        <li>✅ <strong>Odoo 16</strong>: Totalmente compatible</li>
+                        <li>✅ <strong>Odoo 17</strong>: Totalmente compatible</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Módulos Requeridos</h3>
+                    <ul>
+                        <li><code>base</code></li>
+                        <li><code>account</code></li>
+                        <li><code>portal</code></li>
+                        <li><code>account_move_name_sequence</code></li>
+                        <li><code>res_partner_type_store</code></li>
+                        <li><code>l10n_latam_base</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="success" style="margin-top: 16px;">
+                <strong>✅ Compatibilidad Automática:</strong> El módulo utiliza <code>utils/compat.py</code> para manejar 
+                diferencias entre versiones de Odoo (nombres de campos de diarios, impuestos, modelos de personalización).
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🛠️ Validaciones Implementadas</h2>
+            <div class="columns">
+                <div>
+                    <h3>Validaciones de CAI</h3>
+                    <ul>
+                        <li>✅ Rango de números válido</li>
+                        <li>✅ Fecha límite no excedida</li>
+                        <li>✅ CAI único por secuencia</li>
+                        <li>✅ Secuencia bloqueada cuando CAI está confirmado</li>
+                        <li>✅ Hash de confirmación para restablecer</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Validaciones de Facturas</h3>
+                    <ul>
+                        <li>✅ Número dentro del rango del CAI</li>
+                        <li>✅ Fecha dentro del período válido</li>
+                        <li>✅ Tipo de documento correcto</li>
+                        <li>✅ Propagación automática de datos SAG</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Validaciones de Secuencias</h3>
+                    <ul>
+                        <li>✅ No se puede eliminar secuencia con CAI activo</li>
+                        <li>✅ No se puede editar secuencia con CAI confirmado</li>
+                        <li>✅ Validación de rango antes de generar número</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <strong>⚠️ Nota Importante:</strong> El reporte de factura DPS está diseñado para imprimirse sobre papel pre-impreso 
+            específico. Las posiciones están fijas en centímetros (no responsive). Para personalizar, edita 
+            <code>report/report_invoice.xml</code> y ajusta los valores de <code>top</code>, <code>left</code>, <code>right</code>.
+        </div>
+
+        <div class="card">
+            <h2>📋 Checklist de Configuración</h2>
+            <ul>
+                <li>☐ Módulo instalado</li>
+                <li>☐ Grupo de seguridad asignado a usuarios</li>
+                <li>☐ RTN de compañía configurado</li>
+                <li>☐ Establecimientos creados</li>
+                <li>☐ Puntos de emisión creados</li>
+                <li>☐ Tipos de documentos fiscales configurados</li>
+                <li>☐ Diarios configurados con secuencias fiscales</li>
+                <li>☐ CAI creados y confirmados</li>
+                <li>☐ Configuración de libro de ventas creada</li>
+                <li>☐ Configuración de libro de compras creada</li>
+                <li>☐ Números SAG completados en partners principales</li>
+                <li>☐ Prueba de factura DPS realizada</li>
+                <li>☐ Prueba de generación de libros realizada</li>
             </ul>
         </div>
+
         <div class="card">
-            <h2>Reportes disponibles</h2>
+            <h2>👤 Autor y Soporte</h2>
+            <p><strong>Autor:</strong> Allan Ramirez / INTEGRALL</p>
+            <p><strong>Website:</strong> <a href="https://www.integrall.solutions" target="_blank">https://www.integrall.solutions</a></p>
+            <p><strong>Precio:</strong> 1,000 EUR</p>
+            <p><strong>Licencia:</strong> AGPL-3</p>
+        </div>
+
+        <div class="card">
+            <h2>📚 Referencias Legales</h2>
+            <p>El módulo incluye documentación legal en la carpeta <code>leyes/</code>:</p>
             <ul>
-                <li>Libro de Ventas / Compras (PDF y Excel).</li>
-                <li>PT Libro Compras con conciliación contra asientos contables.</li>
-                <li>PT Libro Ventas con detalle de productos y condición de pago.</li>
-                <li>Columnas dinámicas derivadas del número de documento (ref).</li>
+                <li>ACUERDO-481-2017: Reglamento del Régimen de Facturación</li>
+                <li>ACUERDO-609-2017: Modificaciones al régimen</li>
+                <li>ACUERDO-817-2018: Actualizaciones</li>
+                <li>ACUERDO-231-2020: Normativas recientes</li>
             </ul>
         </div>
-    </div>
-
-    <div class="card">
-        <h2>Campos añadidos</h2>
-        <table>
-            <thead>
-                <tr><th>Modelo</th><th>Campo</th><th>Uso</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>res.partner</td><td>number_sag_hn</td><td>Número de registro SAG, se copia a las facturas.</td></tr>
-                <tr><td>account.move</td><td>number_sag_hn / number_oce_hn</td><td>Requisitos del SAR (SAG y Órdenes de compra exentas).</td></tr>
-                <tr><td>account.move</td><td>Campos auxiliares (ISV por tasa, establecimiento, etc.)</td><td>Alimentan los libros PDF y PT.</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="card">
-        <h2>Flujo de trabajo</h2>
-        <ol>
-            <li>Completar datos de CAI y tipos de documento en Configuración.</li>
-            <li>Registrar los números SAG/OCE en clientes y proveedores.</li>
-            <li>Crear configuraciones de libro (ventas y compras).</li>
-            <li>Ejecutar los wizards desde <em>Reportes Fiscales de Honduras</em> y elegir PDF, Excel o PT Excel.</li>
-        </ol>
     </div>
 </body>
 </html>
-

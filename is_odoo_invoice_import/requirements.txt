@@ -1,0 +1,16 @@
+# ======================================================================
+# odoo_import_invoice - External Python Dependencies
+# ----------------------------------------------------------------------
+# This file lists all non-standard Python libraries required by the module.
+# Install them in your Odoo environment using:
+#     pip install -r requirements.txt
+# ======================================================================
+
+# Excel reading support (for .xls files)
+xlrd>=2.0.1
+
+# Excel writing and validation support (for .xlsx files)
+openpyxl>=3.1.2
+
+# Optional: performance and date utilities (used internally by Odoo)
+python-dateutil>=2.8.2

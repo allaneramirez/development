@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="invoice_import_wizard_form_view" model="ir.ui.view">
+            <field name="name">import.invoice.wizard.form</field>
+            <field name="model">import.invoice.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Import Wizard" create="false" edit="false">
+
+                    <separator
+                        string="This wizard allows you to import invoices from Excel (.xls / .xlsx). Make sure to use the correct template and verify your data before importing. The supported documents are: out_invoice (customer invoice), out_refund (customer credit note), out_receipt (customer receipt), in_invoice (vendor bill), in_refund (vendor credit note), and in_receipt (vendor receipt)."
+                        colspan="4"
+                    />
+
+                    <group>
+                        <group>
+                            <field name="invoice_stage_option" widget="radio"
+                                   string="Invoice Stage Option"/>
+
+                            <field name="company_id" widget="many2one"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+
+                        <group>
+                            <field name="import_product_by" widget="radio"
+                                   string="Product Identification Method"/>
+                            <field name="account_option" widget="radio"
+                                   string="Account Source Option"/>
+                        </group>
+                    </group>
+
+                    <separator string="Select Excel File to Import" colspan="4"/>
+                    <group>
+                        <div class="oe_inline">
+                            <label for="files" string="Excel File"/>
+                            <field name="files"
+                                   filename="datas_fname"
+                                   class="oe_inline"
+                                   placeholder="Select your Excel file (.xls / .xlsx)"/>
+                            <field name="datas_fname"
+                                   class="oe_inline"
+                                   invisible="0"
+                                   placeholder="File name"/>
+                        </div>
+                    </group>
+
+                    <footer>
+                        <button name="import_file"
+                                string="Import Invoices"
+                                type="object"
+                                class="oe_highlight"/>
+
+                        <a href="/odoo_import_invoice/download_template"
+                           class="btn btn-secondary"
+                           role="button">
+                            <i class="fa fa-download"/> Download Example Template
+                        </a>
+
+                        <button string="Cancel"
+                                class="oe_link"
+                                special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_invoice_import_wizard" model="ir.actions.act_window">
+            <field name="name">Invoice Import Wizard</field>
+            <field name="res_model">import.invoice.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="invoice_import_wizard_form_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            id="menu_import_invoice_wizard"
+            name="Import Invoices from Excel"
+            parent="account.menu_finance_entries"
+            action="action_invoice_import_wizard"
+            sequence="60"
+        />
+
+    </data>
+</odoo>

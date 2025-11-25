@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_move_form_inherited" model="ir.ui.view">
+        <field name="name">account.move.form.inherited.url</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@id='invoice_tab']" position="inside">
+                    <field name="url" widget="url" string="Link PDF" style="width: 50%;"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
+
+
+
+

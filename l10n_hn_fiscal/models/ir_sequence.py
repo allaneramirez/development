@@ -95,7 +95,7 @@ class IrSequence(models.Model):
         for rec in self:
             if rec.range_start:
                 rec.range_start_str = str(rec.prefix or '') + str(rec.range_start).zfill(8)
-            else:
+        else:
                 rec.range_start_str = False
 
     @api.depends('range_end', 'prefix')
@@ -103,7 +103,7 @@ class IrSequence(models.Model):
         for rec in self:
             if rec.range_end:
                 rec.range_end_str = str(rec.prefix or '') + str(rec.range_end).zfill(8)
-            else:
+        else:
                 rec.range_end_str = False
 
     def _next(self, sequence_date=None):

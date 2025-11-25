@@ -4,6 +4,7 @@ import logging
 import re
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
+from ..utils import compat
 
 _logger = logging.getLogger(__name__)
 
@@ -73,7 +74,7 @@ class L10nHnCai(models.Model):
         help="Hash de seguridad generado al confirmar. Necesario para restablecer a borrador."
     )
 
-    journal_type = fields.Selection(related='journal_id.type', string='Tipo de Diario', readonly=True)
+    journal_type = fields.Char(string='Tipo de Diario', compute='_compute_journal_type', store=False, readonly=True)
     journal_code = fields.Char(related='journal_id.code', string='Código del Diario', readonly=True)
 
     number_next = fields.Integer(
@@ -150,11 +151,19 @@ class L10nHnCai(models.Model):
             if rec.range_start > rec.range_end:
                 raise ValidationError(_("El número inicial del rango no puede ser mayor que el número final."))
 
+    @api.depends('journal_id')
+    def _compute_journal_type(self):
+        for rec in self:
+            rec.journal_type = compat.get_journal_type_value(rec.journal_id) or ''
+
 
     @api.onchange('company_id')
     def _onchange_company_id(self):
         """Actualiza el dominio del journal_id cuando cambia la compañía."""
-        domain = [('type', '=', 'sale')]
+        domain = []
+        sale_domain = compat.make_journal_domain(self.env, 'sale')
+        if sale_domain:
+            domain.extend(sale_domain)
         if self.company_id:
             domain.append(('company_id', '=', self.company_id.id))
         else:

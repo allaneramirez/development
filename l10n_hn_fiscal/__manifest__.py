@@ -1,19 +1,35 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Localización Fiscal Hondureña',
-    'version': '16.0.9.0',
+    'version': '16.0.10.0',
     'category': 'Account',
-    'summary': 'Libros fiscales, CAI y reportes PT para el SAR de Honduras',
+    'summary': 'Factura DPS, Libros fiscales, CAI y reportes PT (Odoo 16 & 17) para el SAR',
     'author': 'Allan Ramirez / INTEGRALL',
     'website': 'https://www.integrall.solutions',
     'description': """
-Características
+Localización Fiscal Hondureña - Módulo completo para cumplimiento con el SAR
+
+Características Principales
+---------------------------
+- ✅ Compatible con Odoo 16 y Odoo 17
+- 🎫 Configuración y control de CAI, secuencias y tipos de documentos fiscales
+- 📋 Campos adicionales para SAG, OCE, condición de pago y datos fiscales locales
+- 📊 Libros de ventas y compras (PDF/XLSX) con filtros por diarios e impuestos
+- 🔍 Reportes PT para compras y ventas con cruce contra asientos contables
+- 👥 Menús y wizards específicos para usuarios del grupo "Reportes Fiscales de Honduras"
+- 🎨 Personalización de colores corporativos en reportes
+- 📈 Desglose automático por tasas de ISV (15% y 18%)
+- 🔄 Propagación automática de datos SAG desde partners a facturas
+
+
+Libros Fiscales
 ---------------
-- Configuración y control de CAI, secuencias y tipos de documentos fiscales.
-- Campos adicionales para SAG, OCE, condición de pago y datos fiscales locales.
-- Libros de ventas y compras (PDF/XLSX) con filtros por diarios e impuestos.
-- Reportes PT para compras y ventas con cruce contra asientos contables.
-- Menús y wizards específicos para usuarios del grupo “Reportes Fiscales de Honduras”.
+- Libro de Ventas: PDF tradicional, Excel y PT Excel con validaciones
+- Libro de Compras: PDF tradicional, Excel y PT Excel con conciliación contable
+- Columnas dinámicas derivadas del número de documento
+- Filtros configurables por diarios e impuestos
+- Totales desglosados por tipo de impuesto
+
 """,
     'depends': [
         'base',
@@ -22,8 +38,6 @@ Características
         'account_move_name_sequence',
         'res_partner_type_store',
         'l10n_latam_base',
-        'fel_gt',
-        'l10n_gt_extra',
     ],
     'data': [
         'security/security.xml',

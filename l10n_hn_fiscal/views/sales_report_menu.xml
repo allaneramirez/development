@@ -26,6 +26,28 @@
             action="l10n_hn_fiscal.action_purchase_report_wizard"
             sequence="20"
             groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
+
+        <!-- Menú para acceder rápidamente a las facturas DPS -->
+        <record id="action_invoice_dps_tree" model="ir.actions.act_window">
+            <field name="name">Facturas DPS</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('move_type', 'in', ('out_invoice', 'out_refund'))]</field>
+            <field name="context">{'search_default_customer': 1, 'default_move_type': 'out_invoice'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Revisa las facturas de cliente y utiliza el botón Imprimir &gt; Factura DPS para obtener el formato pre-impreso.
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="menu_invoice_dps_report"
+            name="Factura Pre-Impresa DPS"
+            parent="menu_fiscal_reports_hn"
+            action="action_invoice_dps_tree"
+            sequence="30"
+            groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal"/>
     </data>
 </odoo>
 

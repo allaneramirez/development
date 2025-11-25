@@ -19,7 +19,17 @@
                 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
                     <page name="fiscal_hn" string="Datos Fiscales Honduras"
                           groups="l10n_hn_fiscal.group_show_l10n_hn_fiscal">
-                        <group name="fiscal_hn_row">
+                        <!-- Grupo de campos exonerados al principio -->
+                        <group name="adquiriente_exonerado" string="Datos del adquiriente exonerado">
+                            <field name="number_sag_hn"
+                                   attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="number_oce_hn"
+                                   attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="consecutive_number_oce_hn"
+                                   attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </group>
+                        
+                        <group name="fiscal_hn_row" string="Datos Fiscales">
                             <group name="fiscal_hn_l">
                                 <field name="cai"
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
@@ -37,10 +47,6 @@
                                 <field name="l10n_hn_establecimiento_code"
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
                                 <field name="l10n_hn_punto_emision_code"
-                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
-                                <field name="number_sag_hn"
-                                       attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
-                                <field name="number_oce_hn"
                                        attrs="{'readonly': ['|',['state','=','posted'],['state','=','cancel']]}"/>
                             </group>
                         </group>

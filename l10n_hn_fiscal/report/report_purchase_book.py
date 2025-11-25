@@ -3,6 +3,7 @@ from odoo import api, models
 from odoo.exceptions import UserError
 import logging
 import re
+from ..utils import compat
 
 _logger = logging.getLogger(__name__)
 
@@ -332,23 +333,7 @@ class ReportPurchaseBook(models.AbstractModel):
         
         # Obtener el color primario del modelo base.document.layout
         company = self.env.company
-        primary_color = None
-        
-        # Buscar el registro de base.document.layout para la compañía actual
-        try:
-            document_layout = self.env['base.document.layout'].search([
-                ('company_id', '=', company.id)
-            ], limit=1)
-            
-            if document_layout and document_layout.primary_color:
-                primary_color = document_layout.primary_color
-        except Exception:
-            # Si el modelo no existe o hay algún error, intentar otros métodos
-            pass
-        
-        # Si no se encontró el color, usar un gris por defecto
-        if not primary_color:
-            primary_color = '#D3D3D3'  # Gris claro por defecto
+        primary_color = compat.get_company_primary_color(self.env, company)
         
         # Color del encabezado: 25% de transparencia (alpha 0.25)
         header_bg_color = self.hex_to_rgba(primary_color, 0.25)

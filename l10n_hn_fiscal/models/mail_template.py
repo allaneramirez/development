@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from odoo import models
+from ..utils import compat
 
 
 class MailTemplate(models.Model):
     _inherit = 'mail.template'
 
-    def generate_email(self, res_ids, fields=None):
+    def generate_email(self, res_ids, fields=None, **kwargs):
         """
         Sobrescribe el método para usar el reporte personalizado cuando se genera
         un email para una factura de venta.
@@ -33,7 +34,7 @@ class MailTemplate(models.Model):
             all_have_custom = True
             for move in moves:
                 if (move.move_type == 'out_invoice' and 
-                    move.journal_id.type == 'sale' and 
+                    compat.is_sale_journal(move.journal_id) and 
                     move.company_id.out_invoice_report_to_print):
                     if custom_report is None:
                         custom_report = move.company_id.out_invoice_report_to_print
@@ -53,7 +54,7 @@ class MailTemplate(models.Model):
         try:
             # Generar el email con el reporte personalizado (si se cambió)
             # noinspection PyUnresolvedReferences
-            result = super().generate_email(move_ids, fields=fields)
+            result = super().generate_email(move_ids, fields=fields, **kwargs)
         finally:
             # Restaurar el report_template original si se cambió
             if original_report_template is not None:
